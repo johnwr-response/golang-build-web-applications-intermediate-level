@@ -19,6 +19,7 @@ Building web applications with Go - Intermediate Level
   - User management
   - Microservices
 ### A bit about me
+### Mistakes, we all make them
 
 
 
