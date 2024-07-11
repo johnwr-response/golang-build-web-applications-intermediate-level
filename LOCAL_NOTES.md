@@ -66,6 +66,30 @@ Building web applications with Go - Intermediate Level
 ## Building a Virtual credit card terminal
 ### What we're going to build
 - A Virtual Terminal, only used locally for testing with live credit card numbers
+### Setting up a (trivial) web application
+- Chi - A lightweight, idiomatic and composable router for building Go HTTP services. [link](https://github.com/go-chi/chi)
+- Create a new folder as the project folder for our stripe app and go into it
+  ```shell
+  md go-stripe
+  cd go-stripe
+  ```
+- Then create a go module for it:  
+  ```go mod init github.com/johnwr-response/golang-build-web-applications-intermediate-level/go-stripe```
+- 
+- Then create a go module for it:  
+  ```shell
+  md cmd/web
+  md cmd/api
+  md internal
+  ni cmd/web/main.go -type file -Value "package main`n`nfunc main() {`n`n}"
+  ni cmd/web/routes.go -type file -Value "package main`n`nfunc routes() {`n`n}"
+  go get -u github.com/go-chi/chi/v5
+  ```
+- Start the app:
+  ```go run ./cmd/web/.```
+
+
+
 
 
 

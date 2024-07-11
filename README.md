@@ -73,3 +73,8 @@ All of these components (front end, back end, and microservice) will be built us
 - Developers who want to integrate Stripe into their applications
 - Developers who want to learn how to build a back end API in Go
 - Developers who want to learn best practices for building modern applications in Go (and JavaScript)
+
+## Stripe app
+- Folder is [go-stripe](go-stripe)
+- Built in Go version 1.22.4
+- Uses the chi router [link](https://github.com/go-chi/chi)
