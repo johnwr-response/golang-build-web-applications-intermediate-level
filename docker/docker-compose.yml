@@ -1,0 +1,17 @@
+services:
+
+  mariadb:
+    image: mariadb
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: exampleDOT33
+      MYSQL_DATABASE: myDatabase
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+
+volumes:
+  mariadb-data:

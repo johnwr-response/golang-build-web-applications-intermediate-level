@@ -51,6 +51,13 @@ Building web applications with Go - Intermediate Level
 - Click button [Start now] to create you account
 ### Installing make
 - Install: ```winget install -e --id GnuWin32.Make```
+### Installing MariaDB
+- [Installing and Using MariaDB via Docker](https://mariadb.com/kb/en/installing-and-using-mariadb-via-docker/)
+  ````
+  cd docker
+  docker-compose up mariadb -d
+  docker-compose down mariadb
+  `````
 
 
 
