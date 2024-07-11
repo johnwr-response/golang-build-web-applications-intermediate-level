@@ -110,6 +110,16 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
     ```npm i -g nodemon```
   - Run Go file
     ```nodemon --exec go run ./main.go --signal SIGTERM```
+### A better extension for Go templates and VS Code
+- Rename all templates and references to them from `*.tmpl` to `*.gohtml`
+- For Visual Studio Code
+  - Remove extension: [Go Template Support]
+  - Add extension: [goTemplate-syntax]
+
+
+
+
+
 
 
 ## Selling a Product online
