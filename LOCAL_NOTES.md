@@ -63,9 +63,14 @@ Building web applications with Go - Intermediate Level
   - [Website](https://www.heidisql.com/)
   - Install: ```winget install -e --id HeidiSQL.HeidiSQL```
 
-
-
 ## Building a Virtual credit card terminal
+### What we're going to build
+- A Virtual Terminal, only used locally for testing with live credit card numbers
+
+
+
+
+
 ## Selling a Product online
 ## Setting up and charging a recurring payment using Stripe Plans
 ## Authentication
