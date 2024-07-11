@@ -20,7 +20,11 @@ Building web applications with Go - Intermediate Level
   - Microservices
 ### A bit about me
 ### Mistakes, we all make them
-
+### How to ask for help
+1. Search online
+2. Compare your code to mine
+3. Look in Q&A
+4. Ask me, and provide your code
 
 
 
