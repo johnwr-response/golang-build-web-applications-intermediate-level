@@ -8,6 +8,9 @@
 *.so
 *.dylib
 
+# IDE files
+.idea/
+
 # Test binary, built with `go test -c`
 *.test
 
@@ -16,6 +19,9 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+
+# soda configuration file with secret content
+database.yml
 
 # Go workspace file
 go.work
