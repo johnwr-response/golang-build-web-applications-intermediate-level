@@ -46,7 +46,9 @@ Building web applications with Go - Intermediate Level
 - GoLand
   - Install using toolbox: ```winget install --id JetBrains.Toolbox```
   - Install directly: ```winget install --id JetBrains.GoLand```
-
+### Get a free Stripe account
+- Go to [stripe.com](https://stripe.com)
+- Click button [Start now] to create you account
 
 
 
