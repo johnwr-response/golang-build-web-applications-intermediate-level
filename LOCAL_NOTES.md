@@ -58,7 +58,10 @@ Building web applications with Go - Intermediate Level
   docker-compose up mariadb -d
   docker-compose down mariadb
   `````
-
+### Getting a database client
+- HeidiSQL
+  - [Website](https://www.heidisql.com/)
+  - Install: ```winget install -e --id HeidiSQL.HeidiSQL```
 
 
 
