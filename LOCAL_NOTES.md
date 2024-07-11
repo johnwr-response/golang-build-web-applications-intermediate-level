@@ -96,7 +96,20 @@ Building web applications with Go - Intermediate Level
   - Try adding extension: [Go Template Support]
 - In GoLand (and possibly also Visual Studio Code)
   - Always replace .tmpl with .gohtml in template filenames. This will enable syntax highlighting and code completion. 
-
+### Addition for Live reload
+Several alternatives are available. Also, just using the `go run ./cmd/web/.` works fine
+- Air - Live reload for Go apps
+  [GitHub](https://github.com/air-verse/air)
+  - Install and use:
+    ```shell
+    go install github.com/air-verse/air@latest
+    ni .air.toml -type file
+    ```
+- Nodemon - Live reload for Go apps
+  - Install Nodemon
+    ```npm i -g nodemon```
+  - Run Go file
+    ```nodemon --exec go run ./main.go --signal SIGTERM```
 
 
 ## Selling a Product online
