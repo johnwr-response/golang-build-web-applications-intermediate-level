@@ -87,8 +87,10 @@ Building web applications with Go - Intermediate Level
   ```
 - Start the app:
   ```go run ./cmd/web/.```
-
-
+### Setting up routes and building  a render function
+- Sidenote: Added hostInterface config and command line parameter to make server listen to specific interface.  
+  As an added benefit during development, windows defender will not try to block this if set to localhost.  
+  If left blank it will listen to all interfaces.
 
 
 

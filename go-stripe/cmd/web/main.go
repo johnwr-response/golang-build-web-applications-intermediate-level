@@ -14,10 +14,11 @@ const version = "1.0.0"
 const cssVersion = "1"
 
 type config struct {
-	port int
-	env  string
-	api  string
-	db   struct {
+	port          int
+	hostInterface string
+	env           string
+	api           string
+	db            struct {
 		dsn string
 	}
 	stripe struct {
@@ -32,23 +33,25 @@ type application struct {
 	errorLog      *log.Logger
 	templateCache map[string]*template.Template
 	version       string
+	cssVersion    string
 }
 
 func (app *application) serve() error {
 	srv := &http.Server{
-		Addr:              fmt.Sprintf(":%d", app.config.port),
+		Addr:              fmt.Sprintf("%s:%d", app.config.hostInterface, app.config.port),
 		Handler:           app.routes(),
 		IdleTimeout:       30 * time.Second,
 		ReadTimeout:       10 * time.Second,
 		ReadHeaderTimeout: 5 * time.Second,
 		WriteTimeout:      5 * time.Second,
 	}
-	app.infoLog.Println("Starting HTTP server in %s mode on port %d", app.config.env, app.config.port)
+	app.infoLog.Println(fmt.Sprintf("Starting HTTP server in %s mode on port %d", app.config.env, app.config.port))
 	return srv.ListenAndServe()
 }
 
 func main() {
 	var cfg config
+	flag.StringVar(&cfg.hostInterface, "interface", "localhost", "Server interface to listen to")
 	flag.IntVar(&cfg.port, "port", 4000, "Server port to listen on")
 	flag.StringVar(&cfg.env, "env", "development", "Application environment {development|production}")
 	flag.StringVar(&cfg.api, "api", "http://localhost:4001", "URL to API")
@@ -67,6 +70,7 @@ func main() {
 		errorLog:      errorLog,
 		templateCache: tc,
 		version:       version,
+		cssVersion:    cssVersion,
 	}
 	err := app.serve()
 	if err != nil {
