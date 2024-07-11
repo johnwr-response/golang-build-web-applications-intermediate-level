@@ -91,9 +91,11 @@ Building web applications with Go - Intermediate Level
 - Sidenote: Added hostInterface config and command line parameter to make server listen to specific interface.  
   As an added benefit during development, windows defender will not try to block this if set to localhost.  
   If left blank it will listen to all interfaces.
-
-
-
+### Displaying one page
+- For Visual Studio Code
+  - Try adding extension: [Go Template Support]
+- In GoLand (and possibly also Visual Studio Code)
+  - Always replace .tmpl with .gohtml in template filenames. This will enable syntax highlighting and code completion. 
 
 
 
