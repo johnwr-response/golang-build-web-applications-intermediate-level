@@ -49,7 +49,8 @@ Building web applications with Go - Intermediate Level
 ### Get a free Stripe account
 - Go to [stripe.com](https://stripe.com)
 - Click button [Start now] to create you account
-
+### Installing make
+- Install: ```winget install -e --id GnuWin32.Make```
 
 
 
