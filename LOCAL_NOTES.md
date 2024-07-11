@@ -26,16 +26,20 @@ Building web applications with Go - Intermediate Level
 3. Look in Q&A
 4. Ask me, and provide your code
 
-
-
-
-
-
-
-
-
-
 ## Setting up Our environment
+### Installing Go
+- Download Go [here](https://go.dev/dl/)
+- WinGet
+  - Install: ```winget install --id GoLang.Go```
+  - Upgrade: ```winget upgrade --id GoLang.Go```
+- Verify  
+  ```go version```
+
+
+
+
+
+
 ## Building a Virtual credit card terminal
 ## Selling a Product online
 ## Setting up and charging a recurring payment using Stripe Plans
