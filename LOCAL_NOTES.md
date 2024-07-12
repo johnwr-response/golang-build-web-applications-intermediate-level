@@ -144,6 +144,9 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
 ### Getting the paymentIntent - finishing up our handler
 - Refactor our internal card package to avoid name conflicts 
 ### Updating the front end JavaScript to call our paymentIntent handler
+### Getting the payment intent, and completing the transaction
+- List of Stripe Test Cards: [Stripe Testing](https://docs.stripe.com/testing)
+  - Look for suitable test cards, i.e. in the `Declined payments` section
 
 
 
