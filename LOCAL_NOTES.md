@@ -136,7 +136,11 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
     ni cmd/api/routes-api.go -type file -Value "package main`n`n"
     go get github.com/go-chi/cors
    ```
- 
+### Getting the paymentIntent - starting up a route and handler, and using make
+    ```shell
+    ni cmd/api/handlers-api.go -type file -Value "package main`n`n"
+   ```
+
 
 
 
