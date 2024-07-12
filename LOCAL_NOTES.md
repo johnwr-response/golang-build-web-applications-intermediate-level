@@ -143,6 +143,7 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
     ```
 ### Getting the paymentIntent - finishing up our handler
 - Refactor our internal card package to avoid name conflicts 
+### Updating the front end JavaScript to call our paymentIntent handler
 
 
 
