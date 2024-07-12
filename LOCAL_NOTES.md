@@ -152,6 +152,9 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
     ```shell
     ni cmd/web/templates/succeeded.page.gohtml -type file -Value "{{template `u{0022}base`u{0022} . }}`n`n{{define `u{0022}title`u{0022}}}`n`n{{end}}`n`n{{define `u{0022}content`u{0022}}}`n`n{{end}}"
     ```
+### Cleaning up the API url and Stripe Publishable Key on our form
+- NOTE: temporarily putting test key in struct
+
 
 
 ## Selling a Product online

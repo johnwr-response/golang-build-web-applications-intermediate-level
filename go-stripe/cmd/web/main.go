@@ -57,7 +57,8 @@ func main() {
 	flag.StringVar(&cfg.api, "api", "http://localhost:4001", "URL to API")
 	flag.Parse()
 
-	cfg.stripe.key = os.Getenv("STRIPE_KEY")
+	//cfg.stripe.key = os.Getenv("STRIPE_KEY")
+	cfg.stripe.key = "pk_test_51PbNQJAmpQVYH1go2dhZHbpjNtORcVyaGAAEiuKI0Gy8Uk3vuXRLCOy5YGqYTLohNEmkph9fMiQwZVvHsRLiz09m00TrybUDVX"
 	cfg.stripe.secret = os.Getenv("STRIPE_SECRET")
 
 	infoLog := log.New(os.Stdout, "INFO\t", log.Ldate|log.Ltime)

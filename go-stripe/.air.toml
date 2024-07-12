@@ -13,6 +13,7 @@ bin = "tmp/main"
 # Customize binary.
 #full_bin = "STRIPE_SECRET=qwerty STRIPE_KEY=qwerty ./tmp/main"
 full_bin = "set APP_ENV=dev&&set APP_USER=air&&cd tmp&&main.exe"
+#full_bin = "set STRIPE_KEY=pk_test_51PbNQJAmpQVYH1go2dhZHbpjNtORcVyaGAAEiuKI0Gy8Uk3vuXRLCOy5YGqYTLohNEmkph9fMiQwZVvHsRLiz09m00TrybUDVX &&set APP_ENV=dev&&set APP_USER=air&&cd tmp&&main.exe"
 # Watch these filename extensions.
 include_ext = ["go", "tpl", "tmpl", "html", "gohtml"]
 # Ignore these filename extensions or directories.
