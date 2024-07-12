@@ -169,6 +169,15 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
 ### What are we going to build?
 - A simple form that allows someone to buy a widget spinner
   (Built mostly in the front end) 
+### Create the database
+- Connect to the database server to create database and database user 
+    ```mariadb
+    CREATE DATABASE IF NOT EXISTS widgets;
+    GRANT all ON widgets.* TO 'widgets'@'%' IDENTIFIED BY 'secret';
+    ```
+
+
+
 
 
 ## Setting up and charging a recurring payment using Stripe Plans
