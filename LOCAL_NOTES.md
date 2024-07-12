@@ -175,6 +175,15 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
     CREATE DATABASE IF NOT EXISTS widgets;
     GRANT all ON widgets.* TO 'widgets'@'%' IDENTIFIED BY 'secret';
     ```
+### Connecting to the database
+- Go-MySQL-Driver - Go MySQL Driver is a MySQL driver for Go's (golang) database/sql package.
+  [GitHub](https://github.com/go-sql-driver/mysql)
+- Create the driver package
+    ```shell
+    md internal/driver
+    ni internal/driver/driver.go -type file -Value "package driver`n`n"
+    go get github.com/go-sql-driver/mysql
+    ```
 
 
 

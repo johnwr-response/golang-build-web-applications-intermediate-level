@@ -1,8 +1,10 @@
 package main
 
 import (
+	"database/sql"
 	"flag"
 	"fmt"
+	"github.com/johnwr-response/golang-build-web-applications-intermediate-level/go-stripe/internal/driver"
 	"log"
 	"net/http"
 	"os"
@@ -49,7 +51,8 @@ func main() {
 	flag.StringVar(&cfg.hostInterface, "interface", "localhost", "Server interface to listen to")
 	flag.IntVar(&cfg.port, "port", 4001, "Server port to listen on")
 	flag.StringVar(&cfg.env, "env", "development", "Application environment {development|production|maintenance}")
-	flag.StringVar(&cfg.db.dsn, "dsn", "", "datasource")
+	flag.StringVar(&cfg.db.dsn, "dsn", "widgets:secret@tcp(localhost:3306)/widgets?parseTime=true&tls=false", "Database connection string")
+	//flag.StringVar(&cfg.db.dsn, "dsn", "", "datasource")
 	flag.Parse()
 
 	cfg.stripe.key = os.Getenv("STRIPE_KEY")
@@ -58,13 +61,21 @@ func main() {
 	infoLog := log.New(os.Stdout, "INFO\t", log.Ldate|log.Ltime)
 	errorLog := log.New(os.Stdout, "ERROR\t", log.Ldate|log.Ltime|log.Lshortfile)
 
+	conn, err := driver.OpenDB(cfg.db.dsn)
+	if err != nil {
+		errorLog.Fatal(err)
+	}
+	defer func(conn *sql.DB) {
+		_ = conn.Close()
+	}(conn)
+
 	app := &application{
 		config:   cfg,
 		infoLog:  infoLog,
 		errorLog: errorLog,
 		version:  version,
 	}
-	err := app.serve()
+	err = app.serve()
 	if err != nil {
 		log.Fatal(err)
 	}

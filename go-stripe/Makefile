@@ -3,7 +3,7 @@ STRIPE_SECRET=sk_test_51PbNQJAmpQVYH1goK1AAe0OzKXyXwOMneDmKEG9gC2TvIJh5kRolff1ph
 STRIPE_KEY=pk_test_51PbNQJAmpQVYH1go2dhZHbpjNtORcVyaGAAEiuKI0Gy8Uk3vuXRLCOy5YGqYTLohNEmkph9fMiQwZVvHsRLiz09m00TrybUDVX
 GO_STRIPE_PORT=4000
 API_PORT=4001
-DSN="root@(localhost:3306)/widgets?parseTime=true&tls=false"
+DSN="widgets:secret@(localhost:3306)/widgets?parseTime=true&tls=false"
 
 ## build: builds all binaries
 build: clean build_front build_back
