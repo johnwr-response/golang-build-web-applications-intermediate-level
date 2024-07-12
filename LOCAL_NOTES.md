@@ -129,7 +129,14 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
     ```
 - Sidenote: Old ruby library for the internationalization of the error codes from stripe, there are probably better solutions for go as well out there
   [GitHub](https://github.com/ekosz/stripe-i18n)
-
+### Getting the paymentIntent - starting work on the back end api
+- Chi CORS net/http middleware - a chi net/http compatible middleware for performing preflight CORS checks on the server side. [link](https://github.com/go-chi/cors)
+    ```shell
+    ni cmd/api/api.go -type file -Value "package main`n`nfunc main() {`n`n}"
+    ni cmd/api/routes-api.go -type file -Value "package main`n`n"
+    go get github.com/go-chi/cors
+   ```
+ 
 
 
 

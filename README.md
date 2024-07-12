@@ -78,3 +78,4 @@ All of these components (front end, back end, and microservice) will be built us
 - Folder is [go-stripe](go-stripe)
 - Built in Go version 1.22.4
 - Uses the chi router [link](https://github.com/go-chi/chi)
+- Uses the chi cors middleware [link](https://github.com/go-chi/cors)
