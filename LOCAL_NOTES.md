@@ -118,9 +118,17 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
 ### Creating the form
 ### Connecting our form to stripe.js
 ### Client side validation
-
-
-
+### Getting the paymentIntent - setting up the back end package
+- Go Stripe - Go library for the Stripe API.
+  [GitHub](https://github.com/stripe/stripe-go)
+  - Install and use:
+    ```shell
+    go get -u github.com/stripe/stripe-go/v79
+    md internal/card
+    ni internal/card/card.go -type file -Value "package card`n`n"
+    ```
+- Sidenote: Old ruby library for the internationalization of the error codes from stripe, there are probably better solutions for go as well out there
+  [GitHub](https://github.com/ekosz/stripe-i18n)
 
 
 

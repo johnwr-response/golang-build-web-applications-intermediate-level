@@ -47,6 +47,10 @@
         const payButton = document.getElementById("pay-button");
         const processing = document.getElementById("processing-payment");
         stripe = Stripe('pk_test_51PbNQJAmpQVYH1go2dhZHbpjNtORcVyaGAAEiuKI0Gy8Uk3vuXRLCOy5YGqYTLohNEmkph9fMiQwZVvHsRLiz09m00TrybUDVX')
+        function hidePayButton() {
+            payButton.classList.add("d-none");
+            processing.classList.remove("d-none");
+        }
         function val() {
             let form = document.getElementById("charge-form")
             if (form.checkValidity() === false) {
@@ -56,6 +60,7 @@
                 return;
             }
             form.classList.add("was-validated");
+            hidePayButton();
         }
         (function(){
             // create stripe & elements
