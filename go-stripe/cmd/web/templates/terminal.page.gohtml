@@ -129,7 +129,7 @@
                                     document.getElementById("payment-currency").value = result.paymentIntent.currency;
                                     processing.classList.add("d-none")
                                     showCardSuccess();
-                                    // would submit the form
+                                    document.getElementById("charge-form").submit();
 
                                 }
 

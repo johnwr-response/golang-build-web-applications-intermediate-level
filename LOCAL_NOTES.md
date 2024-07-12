@@ -147,7 +147,11 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
 ### Getting the payment intent, and completing the transaction
 - List of Stripe Test Cards: [Stripe Testing](https://docs.stripe.com/testing)
   - Look for suitable test cards, i.e. in the `Declined payments` section
-
+### Generating a receipt
+- Create the succeeded page template
+    ```shell
+    ni cmd/web/templates/succeeded.page.gohtml -type file -Value "{{template `u{0022}base`u{0022} . }}`n`n{{define `u{0022}title`u{0022}}}`n`n{{end}}`n`n{{define `u{0022}content`u{0022}}}`n`n{{end}}"
+    ```
 
 
 ## Selling a Product online
