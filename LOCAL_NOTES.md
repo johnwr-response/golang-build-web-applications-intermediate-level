@@ -165,9 +165,12 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
   transaction), what is the best data type to store that amount in if you are using Go?
   - Use an int type
 
-
-
 ## Selling a Product online
+### What are we going to build?
+- A simple form that allows someone to buy a widget spinner
+  (Built mostly in the front end) 
+
+
 ## Setting up and charging a recurring payment using Stripe Plans
 ## Authentication
 ## Protecting routes on the Front End and improving authentication
