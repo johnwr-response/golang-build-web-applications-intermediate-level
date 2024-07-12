@@ -135,12 +135,14 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
     ni cmd/api/api.go -type file -Value "package main`n`nfunc main() {`n`n}"
     ni cmd/api/routes-api.go -type file -Value "package main`n`n"
     go get github.com/go-chi/cors
-   ```
+    ```
 ### Getting the paymentIntent - starting up a route and handler, and using make
+- Create the api handler
     ```shell
     ni cmd/api/handlers-api.go -type file -Value "package main`n`n"
-   ```
-
+    ```
+### Getting the paymentIntent - finishing up our handler
+- Refactor our internal card package to avoid name conflicts 
 
 
 
