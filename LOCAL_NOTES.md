@@ -117,6 +117,7 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
   - Add extension: [goTemplate-syntax]
 ### Creating the form
 ### Connecting our form to stripe.js
+### Client side validation
 
 
 
