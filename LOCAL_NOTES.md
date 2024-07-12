@@ -154,6 +154,16 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
     ```
 ### Cleaning up the API url and Stripe Publishable Key on our form
 - NOTE: temporarily putting test key in struct
+### Quiz 1: Test your knowledge
+- What is the purpose of Stripe's PaymentIntent?
+  - A PaymentIntent transitions through multiple statuses throughout its lifetime as it interfaces with Stripe.js to 
+    perform authentication flows and ultimately creates at most one successful charge.
+- What is the Stripe Publishable key for?
+  - It is used on public facing web pages to identify what Stripe account is associated with the 
+    transactions that takes place.
+- When dealing with amounts (such as prices, or totals, or something that is going to be processed as a currency 
+  transaction), what is the best data type to store that amount in if you are using Go?
+  - Use an int type
 
 
 
