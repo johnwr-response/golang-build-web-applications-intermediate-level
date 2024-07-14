@@ -198,6 +198,12 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
     ```shell
     ni cmd/web/templates/stripe-js.partial.gohtml -type file -Value "{{template `u{0022}base`u{0022} . }}`n`n{{define `u{0022}title`u{0022}}}`n`n{{end}}`n`n{{define `u{0022}content`u{0022}}}`n`n{{end}}"
     ```
+### Modifying the handler to take a struct
+- Adding files and folders
+    ```shell
+    md internal/models
+    ni internal/models/models.go -type file -Value "package models`n`n"
+    ```
 
 
 
