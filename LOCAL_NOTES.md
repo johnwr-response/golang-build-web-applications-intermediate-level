@@ -232,6 +232,7 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
 - Revert migration:
   `soda migrate down`
 ### Creating database models
+### Working on database functions
 
 
 
