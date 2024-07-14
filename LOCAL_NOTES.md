@@ -213,6 +213,24 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
     CREATE TABLE widgets(id int,name varchar(64));
     INSERT INTO widgets(id, name) VALUES(1,'Widget');
     ```
+### Running database migrations
+- Database Migrations - An intelligent means of managing the structure of our database
+- Soda is part of the Buffalo framework (also called Pop)
+- To install:  
+  `go install github.com/gobuffalo/pop/v6/soda@latest`
+- Remove temporarily created widgets table
+    ```mariadb
+    DROP TABLE widgets;
+    ```
+- Create a folder to hold migrations
+    ```shell
+    md migrations
+    ```
+- Add content to up and down files for the migration
+- Run migration:
+  `soda migrate`
+- Revert migration:
+  `soda migrate down`
 
 
 
