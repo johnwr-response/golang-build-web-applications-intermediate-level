@@ -1,0 +1,3 @@
+drop_column("orders", "customer_id")
+
+drop_index("orders", "orders_customer_id_fk")

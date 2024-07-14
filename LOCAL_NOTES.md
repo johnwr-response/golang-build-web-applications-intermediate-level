@@ -237,6 +237,11 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
 ### Inserting a new order
 ### An aside: fixing a problem with calculating the amount
 ### Getting more information about a transaction
+### Customers
+- Generate a migration for our customer table
+  `soda generate fizz CreateCustomerTable`
+  `soda generate fizz AddColsToTransactionsTable`
+  `soda generate fizz AddCustomerIDToOrdersTable`
 
 
 
