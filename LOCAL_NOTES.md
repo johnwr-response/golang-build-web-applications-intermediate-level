@@ -205,6 +205,7 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
     ni internal/models/models.go -type file -Value "package models`n`n"
     ```
 ### Update the Widget page to use data passed to the template
+### Creating a formatCurrency template function
 
 
 
