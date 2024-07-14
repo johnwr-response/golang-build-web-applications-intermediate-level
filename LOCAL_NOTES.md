@@ -242,7 +242,20 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
   `soda generate fizz CreateCustomerTable`
   `soda generate fizz AddColsToTransactionsTable`
   `soda generate fizz AddCustomerIDToOrdersTable`
-
+### Getting started saving customer and transaction information
+- Adding stub home page
+    ```shell
+    ni cmd/web/templates/home.page.gohtml -type file -Value "{{template `u{0022}base`u{0022} . }}`n`n{{define `u{0022}title`u{0022}}}`n`n{{end}}`n`n{{define `u{0022}content`u{0022}}}`n`n{{end}}"
+    ```
+- SCS - HTTP Session Management for Go. [link](https://github.com/alexedwards/scs)
+  - Setup:
+    ```shell
+    go get github.com/alexedwards/scs/v2
+    ```
+- Add middleware to handle loading and saving of sessions
+    ```shell
+    ni cmd/web/middleware.go -type file -Value "package main`n`n"
+    ```
 
 
 

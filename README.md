@@ -82,3 +82,4 @@ All of these components (front end, back end, and microservice) will be built us
 - Uses the Go library for the Stripe API [link](https://github.com/stripe/stripe-go)
 - Uses the Go MySQL Driver [link](https://github.com/go-sql-driver/mysql)
   - Indirectly uses: [filippo.io/edwards25519](filippo.io/edwards25519)
+- Uses the SCS - HTTP Session Management for Go [link](https://github.com/alexedwards/scs)

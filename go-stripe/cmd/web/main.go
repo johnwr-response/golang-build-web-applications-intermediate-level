@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"flag"
 	"fmt"
+	"github.com/alexedwards/scs/v2"
 	"github.com/johnwr-response/golang-build-web-applications-intermediate-level/go-stripe/internal/driver"
 	"github.com/johnwr-response/golang-build-web-applications-intermediate-level/go-stripe/internal/models"
 	"html/template"
@@ -15,6 +16,8 @@ import (
 
 const version = "1.0.0"
 const cssVersion = "1"
+
+var session *scs.SessionManager
 
 type config struct {
 	port          int
@@ -38,6 +41,7 @@ type application struct {
 	version       string
 	cssVersion    string
 	DB            models.DBModel
+	Session       *scs.SessionManager
 }
 
 func (app *application) serve() error {
@@ -78,6 +82,10 @@ func main() {
 		_ = conn.Close()
 	}(conn)
 
+	// set up session
+	session = scs.New()
+	session.Lifetime = 24 * time.Hour
+
 	tc := make(map[string]*template.Template)
 	app := &application{
 		config:        cfg,
@@ -87,6 +95,7 @@ func main() {
 		version:       version,
 		cssVersion:    cssVersion,
 		DB:            models.DBModel{DB: conn},
+		Session:       session,
 	}
 	err = app.serve()
 	if err != nil {
