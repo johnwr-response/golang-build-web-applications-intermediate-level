@@ -184,6 +184,12 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
     ni internal/driver/driver.go -type file -Value "package driver`n`n"
     go get github.com/go-sql-driver/mysql
     ```
+### Creating a product page
+- Adding files and folders
+    ```shell
+    md static
+    ni cmd/web/templates/buy-once.page.gohtml -type file -Value "{{template `u{0022}base`u{0022} . }}`n`n{{define `u{0022}title`u{0022}}}`n`n{{end}}`n`n{{define `u{0022}content`u{0022}}}`n`n{{end}}"
+    ```
 
 
 

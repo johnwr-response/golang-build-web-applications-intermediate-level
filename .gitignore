@@ -11,6 +11,9 @@
 # IDE files
 .idea/
 
+# Other folders
+tmp/
+
 # Test binary, built with `go test -c`
 *.test
 
