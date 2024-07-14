@@ -233,6 +233,7 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
   `soda migrate down`
 ### Creating database models
 ### Working on database functions
+### Inserting a new transaction
 
 
 
