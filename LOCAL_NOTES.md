@@ -257,6 +257,7 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
     ni cmd/web/middleware.go -type file -Value "package main`n`n"
     ```
 ### Create the save customer database method
+### Saving the customer, transaction and order from the handler
 
 
 
