@@ -69,4 +69,4 @@ restart_back: stop_back start_back
 
 ## restart: restarts the front and back end
 restart: restart_front restart_back
-	@echo Back application restarted
+	@echo All applications restarted

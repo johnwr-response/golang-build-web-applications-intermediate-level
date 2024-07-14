@@ -52,6 +52,7 @@ func (app *application) ChargeOnce(w http.ResponseWriter, r *http.Request) {
 		ID:             1,
 		Name:           "Custom Widget",
 		Description:    "A very nice widget",
+		Image:          "/static/widget.png",
 		InventoryLevel: 10,
 		Price:          1000,
 	}
