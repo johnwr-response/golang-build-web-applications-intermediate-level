@@ -190,6 +190,9 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
     md static
     ni cmd/web/templates/buy-once.page.gohtml -type file -Value "{{template `u{0022}base`u{0022} . }}`n`n{{define `u{0022}title`u{0022}}}`n`n{{end}}`n`n{{define `u{0022}content`u{0022}}}`n`n{{end}}"
     ```
+### Creating the product form
+- Sidenote: Added restart, restart-front and restart-back to Makefile to simplify restarting using make.
+  Air is not serving the static content.
 
 
 
