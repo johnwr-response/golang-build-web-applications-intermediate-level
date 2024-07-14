@@ -193,6 +193,11 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
 ### Creating the product form
 - Sidenote: Added restart, restart-front and restart-back to Makefile to simplify restarting using make.
   Air is not serving the static content.
+### Moving JavaScript to a reusable file
+- Adding files and folders
+    ```shell
+    ni cmd/web/templates/stripe-js.partial.gohtml -type file -Value "{{template `u{0022}base`u{0022} . }}`n`n{{define `u{0022}title`u{0022}}}`n`n{{end}}`n`n{{define `u{0022}content`u{0022}}}`n`n{{end}}"
+    ```
 
 
 
