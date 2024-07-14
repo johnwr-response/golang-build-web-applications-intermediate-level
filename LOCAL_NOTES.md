@@ -206,6 +206,7 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
     ```
 ### Update the Widget page to use data passed to the template
 ### Creating a formatCurrency template function
+### Testing the transaction functionality
 
 
 
