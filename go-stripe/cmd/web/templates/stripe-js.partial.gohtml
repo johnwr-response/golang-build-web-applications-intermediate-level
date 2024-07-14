@@ -42,7 +42,8 @@
 
             // For internationalization, allow specifying decimals as both dot and comma
             let amountValueI18N = document.getElementById("amount").value.replace(",", ".");
-            let amountToCharge = String(parseFloat(amountValueI18N) * 100);
+            let amountToCharge = String(parseFloat(amountValueI18N));
+            console.log("amountToCharge : ", amountToCharge)
 
             let payload = {
                 amount: amountToCharge,

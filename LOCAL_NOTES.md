@@ -235,6 +235,7 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
 ### Working on database functions
 ### Inserting a new transaction
 ### Inserting a new order
+### An aside: fixing a problem with calculating the amount
 
 
 

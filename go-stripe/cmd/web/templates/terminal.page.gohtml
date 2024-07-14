@@ -11,8 +11,8 @@
     <form action="/payment-succeeded" method="post" name="charge_form" id="charge-form"
           class="d-block needs-validation charge-form" autocomplete="off" novalidate="novalidate">
         <div class="mb-3">
-            <label for="amount" class="form-label">Amount</label>
-            <input type="text" class="form-control" id="amount" name="amount" required="required" autocomplete="amount-new">
+            <label for="charge-amount" class="form-label">Amount</label>
+            <input type="text" class="form-control" id="charge-amount" required="required" autocomplete="charge_amount-new">
         </div>
         <div class="mb-3">
             <label for="cardholder-name" class="form-label">Cardholder Name</label>
@@ -36,6 +36,7 @@
             </div>
         </div>
 
+        <input type="hidden" name="amount" id="amount">
         <input type="hidden" name="payment_intent" id="payment-intent">
         <input type="hidden" name="payment_method" id="payment-method">
         <input type="hidden" name="payment_amount" id="payment-amount">
@@ -45,5 +46,14 @@
 {{end}}
 
 {{define "js"}}
+    <script>
+        document.getElementById("charge-amount").addEventListener("change",(evt)=>{
+            if (evt.target.value !== "") {
+                document.getElementById("amount").value = evt.target.value * 100;
+            } else {
+                document.getElementById("amount").value = 0;
+            }
+        })
+    </script>
 {{template "stripe-js" .}}
 {{end}}
