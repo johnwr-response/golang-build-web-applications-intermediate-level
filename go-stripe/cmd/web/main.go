@@ -5,6 +5,7 @@ import (
 	"flag"
 	"fmt"
 	"github.com/johnwr-response/golang-build-web-applications-intermediate-level/go-stripe/internal/driver"
+	"github.com/johnwr-response/golang-build-web-applications-intermediate-level/go-stripe/internal/models"
 	"html/template"
 	"log"
 	"net/http"
@@ -36,6 +37,7 @@ type application struct {
 	templateCache map[string]*template.Template
 	version       string
 	cssVersion    string
+	DB            models.DBModel
 }
 
 func (app *application) serve() error {
@@ -84,6 +86,7 @@ func main() {
 		templateCache: tc,
 		version:       version,
 		cssVersion:    cssVersion,
+		DB:            models.DBModel{DB: conn},
 	}
 	err = app.serve()
 	if err != nil {

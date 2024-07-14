@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"github.com/go-chi/chi/v5"
 	"github.com/johnwr-response/golang-build-web-applications-intermediate-level/go-stripe/internal/cards"
 	"net/http"
 	"strconv"
@@ -67,4 +68,21 @@ func (app *application) GetPaymentIntent(w http.ResponseWriter, r *http.Request)
 		w.Header().Set("Content-Type", "application/json")
 		_, _ = w.Write(out)
 	}
+}
+
+func (app *application) GetWidgetByID(w http.ResponseWriter, r *http.Request) {
+	id := chi.URLParam(r, "id")
+	widgetID, _ := strconv.Atoi(id)
+	widget, err := app.DB.GetWidget(widgetID)
+	if err != nil {
+		app.errorLog.Println(err)
+		return
+	}
+	out, err := json.MarshalIndent(widget, "", "  ")
+	if err != nil {
+		app.errorLog.Println(err)
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	_, _ = w.Write(out)
 }

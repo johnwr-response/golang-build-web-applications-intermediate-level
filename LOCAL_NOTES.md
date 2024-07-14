@@ -207,6 +207,12 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
 ### Update the Widget page to use data passed to the template
 ### Creating a formatCurrency template function
 ### Testing the transaction functionality
+### Creating a database table for items for sale
+- Temporarily creating and populating a widgets table
+    ```mariadb
+    CREATE TABLE widgets(id int,name varchar(64));
+    INSERT INTO widgets(id, name) VALUES(1,'Widget');
+    ```
 
 
 

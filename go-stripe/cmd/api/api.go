@@ -5,6 +5,7 @@ import (
 	"flag"
 	"fmt"
 	"github.com/johnwr-response/golang-build-web-applications-intermediate-level/go-stripe/internal/driver"
+	"github.com/johnwr-response/golang-build-web-applications-intermediate-level/go-stripe/internal/models"
 	"log"
 	"net/http"
 	"os"
@@ -31,6 +32,7 @@ type application struct {
 	infoLog  *log.Logger
 	errorLog *log.Logger
 	version  string
+	DB       models.DBModel
 }
 
 func (app *application) serve() error {
@@ -74,6 +76,7 @@ func main() {
 		infoLog:  infoLog,
 		errorLog: errorLog,
 		version:  version,
+		DB:       models.DBModel{DB: conn},
 	}
 	err = app.serve()
 	if err != nil {
