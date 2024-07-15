@@ -269,6 +269,7 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
     ```shell
     ni cmd/web/templates/virtual-terminal-receipt.page.gohtml -type file -Value "{{template `u{0022}base`u{0022} . }}`n`n{{define `u{0022}title`u{0022}}}`n`n{{end}}`n`n{{define `u{0022}content`u{0022}}}`n`n{{end}}"
     ```
+### Fixing a mistake in the formatCurrency template function
 
 
 
