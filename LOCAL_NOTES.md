@@ -275,10 +275,16 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
 ### What are we going to build in this section?
 - A simple form that allows someone to buy a monthly subscription for widget spinners
   (Built mostly in the back end this time)
-
-
-
-
+### Creating a plan on the Stripe Dashboard
+- To enable a subscription we need to set up a Stripe Plan
+  - Log in to `Stripe Dashboard`
+  - Go to `Product catalog` to `Add product`
+    - Name: `Bronze Widget Plan`
+    - Prize: `NOK 20.00`
+    - Choose `Recurring`
+    - Billing Period: `Monthly`
+  - `Add product`
+  - Make a note of it's ID
 
 
 
