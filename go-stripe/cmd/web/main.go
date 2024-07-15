@@ -2,6 +2,7 @@ package main
 
 import (
 	"database/sql"
+	"encoding/gob"
 	"flag"
 	"fmt"
 	"github.com/alexedwards/scs/v2"
@@ -58,6 +59,7 @@ func (app *application) serve() error {
 }
 
 func main() {
+	gob.Register(map[string]interface{}{})
 	var cfg config
 
 	flag.StringVar(&cfg.hostInterface, "interface", "localhost", "Server interface to listen to")

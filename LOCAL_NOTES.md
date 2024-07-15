@@ -262,6 +262,7 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
 ### Fixing a database error, and saving more details
 - Generate a migration for adding payment intent and method fields to our transaction table
   `soda generate fizz AddColsToTransactionTable`
+### Redirecting after post
 
 
 
