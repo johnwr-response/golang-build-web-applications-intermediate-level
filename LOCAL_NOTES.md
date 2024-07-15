@@ -271,10 +271,18 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
     ```
 ### Fixing a mistake in the formatCurrency template function
 
-
-
-
 ## Setting up and charging a recurring payment using Stripe Plans
+### What are we going to build in this section?
+- A simple form that allows someone to buy a monthly subscription for widget spinners
+  (Built mostly in the back end this time)
+
+
+
+
+
+
+
+
 ## Authentication
 ## Protecting routes on the Front End and improving authentication
 ## Mail and Password Resets
