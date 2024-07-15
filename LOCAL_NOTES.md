@@ -263,6 +263,7 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
 - Generate a migration for adding payment intent and method fields to our transaction table
   `soda generate fizz AddColsToTransactionTable`
 ### Redirecting after post
+### Simplifying our PaymentSucceeded handler
 
 
 
