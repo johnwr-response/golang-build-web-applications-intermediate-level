@@ -264,6 +264,11 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
   `soda generate fizz AddColsToTransactionTable`
 ### Redirecting after post
 ### Simplifying our PaymentSucceeded handler
+### Revisiting our Virtual Terminal
+- Adding a receipt page for virtual terminal
+    ```shell
+    ni cmd/web/templates/virtual-terminal-receipt.page.gohtml -type file -Value "{{template `u{0022}base`u{0022} . }}`n`n{{define `u{0022}title`u{0022}}}`n`n{{end}}`n`n{{define `u{0022}content`u{0022}}}`n`n{{end}}"
+    ```
 
 
 

@@ -90,6 +90,51 @@ func (app *application) GetTransactionData(r *http.Request) (TransactionData, er
 	return txnData, nil
 }
 
+// VirtualTerminalPaymentSucceeded displays the receipt page for virtual terminal transactions
+func (app *application) VirtualTerminalPaymentSucceeded(w http.ResponseWriter, r *http.Request) {
+	txnData, err := app.GetTransactionData(r)
+	if err != nil {
+		app.errorLog.Println(err)
+		return
+	}
+
+	// create a new transaction
+	txn := models.Transaction{
+		Amount:              txnData.PaymentAmount,
+		Currency:            txnData.PaymentCurrency,
+		LastFour:            txnData.LastFour,
+		ExpiryMonth:         txnData.ExpiryMonth,
+		ExpiryYear:          txnData.ExpiryYear,
+		PaymentIntent:       txnData.PaymentIntentID,
+		PaymentMethod:       txnData.PaymentMethodID,
+		BankReturnCode:      txnData.BankReturnCode,
+		TransactionStatusID: 2,
+	}
+	_, err = app.SaveTransaction(txn)
+	if err != nil {
+		app.errorLog.Println(err)
+		return
+	}
+
+	// write this data to session, and then redirect user to new page
+	app.Session.Put(r.Context(), "receipt", txnData)
+	http.Redirect(w, r, "/virtual-terminal-receipt", http.StatusSeeOther)
+}
+
+// VirtualTerminalReceipt shows the receipt page for virtual terminal
+func (app *application) VirtualTerminalReceipt(w http.ResponseWriter, r *http.Request) {
+	//txn := app.Session.Pop(r.Context(), "receipt").(TransactionData)
+	txn := app.Session.Get(r.Context(), "receipt").(TransactionData)
+	app.Session.Remove(r.Context(), "receipt")
+	data := make(map[string]interface{})
+	data["txn"] = txn
+	if err := app.renderTemplate(w, r, "virtual-terminal-receipt", &templateData{
+		Data: data,
+	}); err != nil {
+		app.errorLog.Println(err)
+	}
+}
+
 // PaymentSucceeded displays the receipt page
 func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request) {
 	err := r.ParseForm()
@@ -151,7 +196,6 @@ func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request)
 	// write this data to session, and then redirect user to new page
 	app.Session.Put(r.Context(), "receipt", txnData)
 	http.Redirect(w, r, "/receipt", http.StatusSeeOther)
-
 }
 
 func (app *application) Receipt(w http.ResponseWriter, r *http.Request) {
