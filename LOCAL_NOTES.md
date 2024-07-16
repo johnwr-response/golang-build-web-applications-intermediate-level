@@ -301,6 +301,7 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
 - Update the plan_id column in widgets table with the correct plan_id 
 ### Working on the JavaScript for plans
 - Create a Stripe Customer [link](https://docs.stripe.com/api/customers)
+### Continuing with the JavaScript for subscribing to a plan
 
 
 
