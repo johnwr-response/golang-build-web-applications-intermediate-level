@@ -285,9 +285,16 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
     - Billing Period: `Monthly`
   - `Add product`
   - Make a note of it's ID
+### Creating stubs for the front end page and handler
+- Adding a template page for the bronze-plan
+    ```shell
+    ni cmd/web/templates/bronze-plan.page.gohtml -type file -Value "{{template `u{0022}base`u{0022} . }}`n`n{{define `u{0022}title`u{0022}}}`n`n{{end}}`n`n{{define `u{0022}content`u{0022}}}`n`n{{end}}"
+    ```
 
 
 
+
+`prod_QTmRe1JTZTcv4h`
 
 ## Authentication
 ## Protecting routes on the Front End and improving authentication
