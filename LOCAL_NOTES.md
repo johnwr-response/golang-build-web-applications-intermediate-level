@@ -290,11 +290,18 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
     ```shell
     ni cmd/web/templates/bronze-plan.page.gohtml -type file -Value "{{template `u{0022}base`u{0022} . }}`n`n{{define `u{0022}title`u{0022}}}`n`n{{end}}`n`n{{define `u{0022}content`u{0022}}}`n`n{{end}}"
     ```
+### Setting up the form
+- Adding a widget in the database
+    ```mariadb
+    INSERT INTO widgets(name, description, image, inventory_level, price, created_at, updated_at) VALUES('Bronze Plan','Get three widgets for the price of two every month','',100000,2000,now(), now());
+    ```
+- Generate a migration for adding plan_id and is_recurring fields to our widgets table
+  `soda generate fizz AddPlanIDRecurringColsToWidgetsTable`
+  `soda migrate`
+- Update the plan_id column in widgets table with the correct plan_id 
 
 
 
-
-`prod_QTmRe1JTZTcv4h`
 
 ## Authentication
 ## Protecting routes on the Front End and improving authentication
