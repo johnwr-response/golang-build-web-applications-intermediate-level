@@ -309,6 +309,11 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
 - Side note: later make sure stripe key and secret are properly set from config
 ### Saving transaction & customer information to the database 
 ### Saving transaction & customer information II 
+### Displaying a receipt page for the Bronze Plan
+- Adding a template page for the receipt page of bronze-plan
+    ```shell
+    ni cmd/web/templates/receipt-plan.page.gohtml -type file -Value "{{template `u{0022}base`u{0022} . }}`n`n{{define `u{0022}title`u{0022}}}`n`n{{end}}`n`n{{define `u{0022}content`u{0022}}}`n`n{{end}}"
+    ```
 
 
 
