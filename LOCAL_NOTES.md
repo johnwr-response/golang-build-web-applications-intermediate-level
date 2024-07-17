@@ -338,6 +338,7 @@ How to ensure our users are valid
     ```shell
     ni cmd/api/helpers.go -type file -Value "package main`n`n"
     ```
+### Create a writeJSON helper function
 
 
 
