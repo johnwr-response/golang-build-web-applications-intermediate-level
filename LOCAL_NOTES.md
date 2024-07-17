@@ -304,9 +304,9 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
 ### Continuing with the JavaScript for subscribing to a plan
 ### Create a handler for the POST request after a user is subscribed
 ### Create methods to create a Stripe customer and subscribe to a plan
-
-
-
+### Updating our handler to complete a subscription
+- Changing plan_id stored in the database from Product ID for plan to Price ID
+- Side note: later make sure stripe key and secret are properly set from config
 
 ## Authentication
 ## Protecting routes on the Front End and improving authentication
