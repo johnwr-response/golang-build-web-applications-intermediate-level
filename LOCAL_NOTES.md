@@ -340,6 +340,7 @@ How to ensure our users are valid
     ```
 ### Create a writeJSON helper function
 ### Starting the authentication process
+### Creating an invalidCredentials helper function
 
 
 
