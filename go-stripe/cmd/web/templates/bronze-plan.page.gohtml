@@ -123,7 +123,7 @@
                     plan: '{{$widget.PlanID}}',
                     payment_method: result.paymentMethod.id,
                     email: document.getElementById("cardholder-email").value,
-                    last_four: result.paymentMethod.card.last_four,
+                    last_four: result.paymentMethod.card.last4,
                 }
 
                 const requestOptions = {

@@ -302,6 +302,7 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
 ### Working on the JavaScript for plans
 - Create a Stripe Customer [link](https://docs.stripe.com/api/customers)
 ### Continuing with the JavaScript for subscribing to a plan
+### Create a handler for the POST request after a user is subscribed
 
 
 
