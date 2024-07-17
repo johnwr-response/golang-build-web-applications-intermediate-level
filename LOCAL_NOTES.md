@@ -314,11 +314,25 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
     ```shell
     ni cmd/web/templates/receipt-plan.page.gohtml -type file -Value "{{template `u{0022}base`u{0022} . }}`n`n{{define `u{0022}title`u{0022}}}`n`n{{end}}`n`n{{define `u{0022}content`u{0022}}}`n`n{{end}}"
     ```
-
-
-
-
 ## Authentication
+### Introduction
+How to ensure our users are valid
+- How authentication works
+  - Front end - `session Auth`
+  - Back end - `tokens`
+- Authentication types
+  - HTTP Basic
+  - Tokens
+  - Stateful tokens
+  - Stateless tokens (JWT)
+  - API keys
+  - OAuth 2.0
+
+
+
+
+
+
 ## Protecting routes on the Front End and improving authentication
 ## Mail and Password Resets
 ## Building Admin pages to manage purchases
