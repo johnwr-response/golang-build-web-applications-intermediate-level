@@ -128,10 +128,12 @@
                     card_brand: result.paymentMethod.card.brand,
                     expiry_month: result.paymentMethod.card.exp_month,
                     expiry_year: result.paymentMethod.card.exp_year,
+                    currency: result.currency,
                     first_name: document.getElementById("first-name").value,
                     last_name: document.getElementById("last-name").value,
                     amount: document.getElementById("amount").value,
                 }
+                console.log(result)
 
                 const requestOptions = {
                     method: 'post',

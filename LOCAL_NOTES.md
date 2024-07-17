@@ -308,6 +308,7 @@ Several alternatives are available. Also, just using the `go run ./cmd/web/.` wo
 - Changing plan_id stored in the database from Product ID for plan to Price ID
 - Side note: later make sure stripe key and secret are properly set from config
 ### Saving transaction & customer information to the database 
+### Saving transaction & customer information II 
 
 
 
