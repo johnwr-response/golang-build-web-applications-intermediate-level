@@ -347,6 +347,8 @@ How to ensure our users are valid
     ```shell
     go get golang.org/x/crypto/bcrypt
     ```
+### Making sure that everything works
+- sample user: admin@example.com:password
 
 
 
