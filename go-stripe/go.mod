@@ -9,4 +9,5 @@ require (
 	github.com/go-chi/cors v1.2.1 // indirect
 	github.com/go-sql-driver/mysql v1.8.1 // indirect
 	github.com/stripe/stripe-go/v79 v79.3.0 // indirect
+	golang.org/x/crypto v0.25.0 // indirect
 )

@@ -341,6 +341,14 @@ How to ensure our users are valid
 ### Create a writeJSON helper function
 ### Starting the authentication process
 ### Creating an invalidCredentials helper function
+### Creating an passwordMatches helper function
+- Package bcrypt implements bcrypt adaptive hashing algorithm
+  - Install and use:
+    ```shell
+    go get golang.org/x/crypto/bcrypt
+    ```
+
+
 
 
 
