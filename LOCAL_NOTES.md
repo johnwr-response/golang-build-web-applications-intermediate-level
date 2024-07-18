@@ -375,6 +375,7 @@ How to ensure our users are valid
     ```shell
     ni cmd/api/middleware.go -type file -Value "package main`n`n"
     ```
+### Trying out a protected route
 
 
 
