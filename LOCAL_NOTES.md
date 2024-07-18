@@ -362,6 +362,7 @@ How to ensure our users are valid
 ### Changing the login link based on authentication status
 ### Checking authentication on the back end
 ### A bit of housekeeping
+### Creating stub functions to validate a token
 
 
 
