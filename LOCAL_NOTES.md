@@ -363,6 +363,7 @@ How to ensure our users are valid
 ### Checking authentication on the back end
 ### A bit of housekeeping
 ### Creating stub functions to validate a token
+### Extracting the token from the authorization header
 
 
 

@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"github.com/go-chi/chi/v5"
 	"github.com/johnwr-response/golang-build-web-applications-intermediate-level/go-stripe/internal/cards"
@@ -9,6 +10,7 @@ import (
 	"github.com/stripe/stripe-go/v79"
 	"net/http"
 	"strconv"
+	"strings"
 	"time"
 )
 
@@ -278,8 +280,24 @@ func (app *application) CreateAuthToken(w http.ResponseWriter, r *http.Request) 
 	_ = app.writeJSON(w, http.StatusOK, payload)
 }
 
-func (app *application) authenticateToken(_ *http.Request) (*models.User, error) {
+func (app *application) authenticateToken(r *http.Request) (*models.User, error) {
 	var u models.User
+
+	authorizationHeader := r.Header.Get("Authorization")
+	if authorizationHeader == "" {
+		return nil, errors.New("no authorization header received")
+	}
+	headerParts := strings.Split(authorizationHeader, " ")
+	if len(headerParts) != 2 || headerParts[0] != "Bearer" {
+		return nil, errors.New("no authorization header received")
+	}
+	token := headerParts[1]
+	if len(token) != 26 {
+		return nil, errors.New("authentication token wrong size")
+	}
+
+	// get the user from the tokens table
+
 	return &u, nil
 }
 
