@@ -1,0 +1,2 @@
+add_column("tokens", "expiry", "timestamp", {})
+sql("update tokens set expiry = '2010-01-01';")

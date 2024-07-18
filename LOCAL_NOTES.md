@@ -367,6 +367,9 @@ How to ensure our users are valid
 ### Validating the token on the back end
 ### Testing out our token validation
 ### Challenge: Checking for expiry
+### Solution to challenge
+- Generate a migration for adding expiry to our tokens table
+  `soda generate fizz AddExpiryToTokensTable`
 
 
 

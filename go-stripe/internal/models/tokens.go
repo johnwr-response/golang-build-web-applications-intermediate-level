@@ -55,15 +55,16 @@ func (m *DBModel) InsertToken(t *Token, u User) error {
 
 	stmt = `
 		INSERT INTO tokens(
-			user_id, name, email, token_hash
+			user_id, name, email, token_hash, expiry
 		)
-		VALUES(?, ?, ?, ?)
+		VALUES(?, ?, ?, ?, ?)
 	`
 	_, err = m.DB.ExecContext(ctx, stmt,
 		u.ID,
 		u.LastName,
 		u.Email,
 		t.Hash,
+		t.Expiry,
 	)
 	if err != nil {
 		return err
@@ -84,8 +85,9 @@ func (m *DBModel) GetUserForToken(token string) (*User, error) {
 			INNER JOIN tokens t ON (t.user_id = u.id)
 		WHERE
 		    t.token_hash = ?
+			and t.expiry > ?
 	`
-	err := m.DB.QueryRowContext(ctx, query, tokenHash[:]).Scan(
+	err := m.DB.QueryRowContext(ctx, query, tokenHash[:], time.Now()).Scan(
 		&user.ID,
 		&user.FirstName,
 		&user.LastName,
