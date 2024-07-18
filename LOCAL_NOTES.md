@@ -358,6 +358,7 @@ How to ensure our users are valid
 ### Saving the token to the database
 - Generate a migration for our tokens table
   `soda generate fizz CreateTokensTable`
+### Saving the token to local storage
 
 
 
