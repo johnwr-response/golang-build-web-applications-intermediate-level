@@ -366,6 +366,7 @@ How to ensure our users are valid
 ### Extracting the token from the authorization header
 ### Validating the token on the back end
 ### Testing out our token validation
+### Challenge: Checking for expiry
 
 
 
