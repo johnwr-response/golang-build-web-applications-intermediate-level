@@ -355,6 +355,9 @@ How to ensure our users are valid
     ni internal/models/tokens.go -type file -Value "package models`n`n"
     ```
 ### Generating and sending back a token
+### Saving the token to the database
+- Generate a migration for our tokens table
+  `soda generate fizz CreateTokensTable`
 
 
 
