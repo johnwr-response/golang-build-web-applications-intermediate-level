@@ -380,14 +380,14 @@ How to ensure our users are valid
 ### Changing the Virtual Terminal page to use fetch
 ### Verifying saved transaction
 
-
-
-
-
-
-
-
 ## Protecting routes on the Front End and improving authentication
+### Writing middleware on the front end to check authentication
+
+
+
+
+
+
 ## Mail and Password Resets
 ## Building Admin pages to manage purchases
 ## Refunds
