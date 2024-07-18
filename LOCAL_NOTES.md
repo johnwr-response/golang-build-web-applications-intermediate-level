@@ -360,6 +360,7 @@ How to ensure our users are valid
   `soda generate fizz CreateTokensTable`
 ### Saving the token to local storage
 ### Changing the login link based on authentication status
+### Checking authentication on the back end
 
 
 
