@@ -349,6 +349,11 @@ How to ensure our users are valid
     ```
 ### Making sure that everything works
 - sample user: admin@example.com:password
+### Create a function to generate a token
+- Add a file to hold token helper functions
+    ```shell
+    ni internal/models/tokens.go -type file -Value "package models`n`n"
+    ```
 
 
 
