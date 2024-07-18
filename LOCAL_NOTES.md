@@ -359,6 +359,7 @@ How to ensure our users are valid
 - Generate a migration for our tokens table
   `soda generate fizz CreateTokensTable`
 ### Saving the token to local storage
+### Changing the login link based on authentication status
 
 
 
