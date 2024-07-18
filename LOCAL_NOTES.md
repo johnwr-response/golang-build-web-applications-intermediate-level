@@ -378,6 +378,7 @@ How to ensure our users are valid
 ### Trying out a protected route
 ### Converting the Virtual Terminal post to use the back end
 ### Changing the Virtual Terminal page to use fetch
+### Verifying saved transaction
 
 
 
