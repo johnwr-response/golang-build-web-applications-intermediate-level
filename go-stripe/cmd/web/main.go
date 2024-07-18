@@ -70,8 +70,9 @@ func main() {
 	flag.Parse()
 
 	//cfg.stripe.key = os.Getenv("STRIPE_KEY")
+	//cfg.stripe.secret = os.Getenv("STRIPE_SECRET")
 	cfg.stripe.key = "pk_test_51PbNQJAmpQVYH1go2dhZHbpjNtORcVyaGAAEiuKI0Gy8Uk3vuXRLCOy5YGqYTLohNEmkph9fMiQwZVvHsRLiz09m00TrybUDVX"
-	cfg.stripe.secret = os.Getenv("STRIPE_SECRET")
+	cfg.stripe.secret = "sk_test_51PbNQJAmpQVYH1goK1AAe0OzKXyXwOMneDmKEG9gC2TvIJh5kRolff1ph5QkCyUsGX3foNk1BEPUzffSSxQUUTME00PibhFZo0"
 
 	infoLog := log.New(os.Stdout, "INFO\t", log.Ldate|log.Ltime)
 	errorLog := log.New(os.Stdout, "ERROR\t", log.Ldate|log.Ltime|log.Lshortfile)
