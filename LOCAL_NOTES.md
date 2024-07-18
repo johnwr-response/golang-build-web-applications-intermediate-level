@@ -370,6 +370,11 @@ How to ensure our users are valid
 ### Solution to challenge
 - Generate a migration for adding expiry to our tokens table
   `soda generate fizz AddExpiryToTokensTable`
+### Implementing middleware to protect specific routes
+- Add middleware to handle protection of api routes
+    ```shell
+    ni cmd/api/middleware.go -type file -Value "package main`n`n"
+    ```
 
 
 
