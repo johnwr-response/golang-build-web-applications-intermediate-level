@@ -361,6 +361,7 @@ How to ensure our users are valid
 ### Saving the token to local storage
 ### Changing the login link based on authentication status
 ### Checking authentication on the back end
+### A bit of housekeeping
 
 
 
