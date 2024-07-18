@@ -354,6 +354,7 @@ How to ensure our users are valid
     ```shell
     ni internal/models/tokens.go -type file -Value "package models`n`n"
     ```
+### Generating and sending back a token
 
 
 

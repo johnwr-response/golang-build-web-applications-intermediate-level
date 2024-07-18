@@ -2,12 +2,14 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/go-chi/chi/v5"
 	"github.com/johnwr-response/golang-build-web-applications-intermediate-level/go-stripe/internal/cards"
 	"github.com/johnwr-response/golang-build-web-applications-intermediate-level/go-stripe/internal/models"
 	"github.com/stripe/stripe-go/v79"
 	"net/http"
 	"strconv"
+	"time"
 )
 
 type stripePayload struct {
@@ -249,15 +251,22 @@ func (app *application) CreateAuthToken(w http.ResponseWriter, r *http.Request) 
 	}
 
 	// generate the token
+	token, err := models.GenerateToken(user.ID, 24*time.Hour, models.ScopeAuthentication)
+	if err != nil {
+		_ = app.badRequest(w, r, err)
+		return
+	}
 
 	// send response
 
 	var payload struct {
-		Error   bool   `json:"error"`
-		Message string `json:"message"`
+		Error   bool          `json:"error"`
+		Message string        `json:"message"`
+		Token   *models.Token `json:"authentication_token"`
 	}
 	payload.Error = false
-	payload.Message = "Success!"
+	payload.Message = fmt.Sprintf("token for %s created", userInput.Email)
+	payload.Token = token
 
 	_ = app.writeJSON(w, http.StatusOK, payload)
 }
