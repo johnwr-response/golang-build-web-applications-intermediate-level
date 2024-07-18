@@ -365,6 +365,7 @@ How to ensure our users are valid
 ### Creating stub functions to validate a token
 ### Extracting the token from the authorization header
 ### Validating the token on the back end
+### Testing out our token validation
 
 
 
