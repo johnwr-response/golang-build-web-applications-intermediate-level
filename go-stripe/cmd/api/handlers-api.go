@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"github.com/go-chi/chi/v5"
 	"github.com/johnwr-response/golang-build-web-applications-intermediate-level/go-stripe/internal/cards"
+	"github.com/johnwr-response/golang-build-web-applications-intermediate-level/go-stripe/internal/encryption"
 	"github.com/johnwr-response/golang-build-web-applications-intermediate-level/go-stripe/internal/models"
 	"github.com/johnwr-response/golang-build-web-applications-intermediate-level/go-stripe/internal/urlSigner"
 	"github.com/stripe/stripe-go/v79"
@@ -438,7 +439,17 @@ func (app *application) ResetPassword(w http.ResponseWriter, r *http.Request) {
 		_ = app.badRequest(w, r, err)
 		return
 	}
-	user, err := app.DB.GetUserByEmail(payload.Email)
+
+	encryptor := encryption.Encryption{
+		Key: []byte(app.config.secretKey),
+	}
+	realEmail, err := encryptor.Decrypt(payload.Email)
+	if err != nil {
+		_ = app.badRequest(w, r, err)
+		return
+	}
+
+	user, err := app.DB.GetUserByEmail(realEmail)
 	if err != nil {
 		_ = app.badRequest(w, r, err)
 		return

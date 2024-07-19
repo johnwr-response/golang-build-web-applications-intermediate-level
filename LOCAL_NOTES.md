@@ -451,6 +451,7 @@ How to ensure our users are valid
     md internal/encryption
     ni internal/encryption/encryption.go -type file -Value "package encryption`n`n"
     ```
+### Using our encryption package to lock down password resets
 
 
 
