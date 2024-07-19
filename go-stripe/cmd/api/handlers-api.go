@@ -7,6 +7,7 @@ import (
 	"github.com/go-chi/chi/v5"
 	"github.com/johnwr-response/golang-build-web-applications-intermediate-level/go-stripe/internal/cards"
 	"github.com/johnwr-response/golang-build-web-applications-intermediate-level/go-stripe/internal/models"
+	"github.com/johnwr-response/golang-build-web-applications-intermediate-level/go-stripe/internal/urlSigner"
 	"github.com/stripe/stripe-go/v79"
 	"net/http"
 	"strconv"
@@ -389,10 +390,28 @@ func (app *application) SendPasswordResetEmail(w http.ResponseWriter, r *http.Re
 		_ = app.badRequest(w, r, err)
 		return
 	}
+
+	// verify that email exists in database
+	_, err = app.DB.GetUserByEmail(payload.Email)
+	if err != nil {
+		var resp struct {
+			Error   bool   `json:"error"`
+			Message string `json:"message"`
+		}
+		resp.Error = true
+		resp.Message = "No matching email found on our system"
+		_ = app.writeJSON(w, http.StatusAccepted, resp)
+		return
+	}
+
+	link := fmt.Sprintf("%s/reset-password?email=%s", app.config.frontend, payload.Email)
+	sign := urlSigner.Signer{Secret: []byte(app.config.secretKey)}
+	signedLink := sign.GenerateTokenFromString(link)
+
 	var data struct {
 		Link string
 	}
-	data.Link = "https://www.nothing-at-all.com/"
+	data.Link = signedLink
 	// send mail
 	err = app.SendMail("info@widgets.com", "info@widgets.com", "Password Reset Request", "password-reset", data)
 	if err != nil {
