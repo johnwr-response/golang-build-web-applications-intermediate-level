@@ -426,6 +426,16 @@ How to ensure our users are valid
   - Password: `399982fbb4cbe9`
 ### Sending mail Part II
 ### Creating our mail templates and sending a test email
+### Implementing signed links for our email message
+- Go-alone - A simple to use, high-performance, Go (golang) MAC (Message authentication code) signer.
+  [Link](https://github.com/bwmarrin/go-alone)
+- Import into project
+  ```go get github.com/bwmarrin/go-alone```
+- Add urlSigner internal package
+    ```shell
+    md internal/urlSigner
+    ni internal/urlSigner/signer.go -type file -Value "package urlSigner`n`n"
+    ```
 
 
 
