@@ -437,6 +437,7 @@ How to ensure our users are valid
     ni internal/urlSigner/signer.go -type file -Value "package urlSigner`n`n"
     ```
 ### Using our urlSigner package
+### Creating the reset password route and handler
 
 
 

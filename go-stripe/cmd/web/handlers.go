@@ -1,9 +1,12 @@
 package main
 
 import (
+	"fmt"
 	"github.com/go-chi/chi/v5"
 	"github.com/johnwr-response/golang-build-web-applications-intermediate-level/go-stripe/internal/cards"
 	"github.com/johnwr-response/golang-build-web-applications-intermediate-level/go-stripe/internal/models"
+	"github.com/johnwr-response/golang-build-web-applications-intermediate-level/go-stripe/internal/urlSigner"
+	"log"
 	"net/http"
 	"strconv"
 	"time"
@@ -315,6 +318,22 @@ func (app *application) Logout(w http.ResponseWriter, r *http.Request) {
 func (app *application) ForgotPassword(w http.ResponseWriter, r *http.Request) {
 	if err := app.renderTemplate(w, r, "forgot-password", &templateData{}); err != nil {
 		app.errorLog.Println(err)
+	}
+
+}
+
+func (app *application) ShowResetPassword(w http.ResponseWriter, r *http.Request) {
+	theURL := r.RequestURI
+	testURL := fmt.Sprintf("%s%s", app.config.frontend, theURL)
+	signer := urlSigner.Signer{
+		Secret: []byte(app.config.secretKey),
+	}
+	valid := signer.VerifyToken(testURL)
+	log.Println(valid)
+	if valid != false {
+		_, _ = w.Write([]byte("valid"))
+	} else {
+		_, _ = w.Write([]byte("invalid"))
 	}
 
 }

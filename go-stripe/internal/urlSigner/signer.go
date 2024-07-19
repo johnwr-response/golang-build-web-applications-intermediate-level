@@ -3,6 +3,7 @@ package urlSigner
 import (
 	"fmt"
 	goalone "github.com/bwmarrin/go-alone"
+	"log"
 	"strings"
 	"time"
 )
@@ -28,7 +29,7 @@ func (s *Signer) VerifyToken(token string) bool {
 	crypt := goalone.New(s.Secret, goalone.Timestamp)
 	_, err := crypt.Unsign([]byte(token))
 	if err != nil {
-		fmt.Println(err)
+		log.Println(err)
 		return false
 	}
 	return true
