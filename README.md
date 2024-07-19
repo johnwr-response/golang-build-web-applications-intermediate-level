@@ -87,4 +87,4 @@ All of these components (front end, back end, and microservice) will be built us
   - Also, the session store for mysql [link](https://github.com/alexedwards/scs/tree/master/mysqlstore)
 - Uses the Go Simple Mail [link](https://github.com/xhit/go-simple-mail)
   - Indirectly uses: [DKIM (DomainKeys Identified Mail) package for golang](https://github.com/toorop/go-dkim)
-
+- Emails sent through [MailTrap](https://mailtrap.io/)
