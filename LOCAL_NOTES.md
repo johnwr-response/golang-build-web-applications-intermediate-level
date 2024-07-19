@@ -398,10 +398,16 @@ How to ensure our users are valid
 - Generate a migration for creating sessions table0
   `soda generate sql CreateSessionsTable`
 
-
-
-
 ## Mail and Password Resets
+### Password resets
+- Adding a template page for the forgot password page
+    ```shell
+    ni cmd/web/templates/forgot-password.page.gohtml -type file -Value "{{template `u{0022}base`u{0022} . }}`n`n{{define `u{0022}title`u{0022}}}`n`n{{end}}`n`n{{define `u{0022}content`u{0022}}}`n`n{{end}}"
+    ```
+
+
+
+
 ## Building Admin pages to manage purchases
 ## Refunds
 ## Cancelling Subscriptions
