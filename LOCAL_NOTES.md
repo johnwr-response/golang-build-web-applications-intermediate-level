@@ -404,6 +404,19 @@ How to ensure our users are valid
     ```shell
     ni cmd/web/templates/forgot-password.page.gohtml -type file -Value "{{template `u{0022}base`u{0022} . }}`n`n{{define `u{0022}title`u{0022}}}`n`n{{end}}`n`n{{define `u{0022}content`u{0022}}}`n`n{{end}}"
     ```
+### Sending mail Part I
+- Go Simple Mail - Golang package for send email. Support keep alive connection, TLS and SSL. Easy for bulk SMTP.
+  [GitHub](https://github.com/xhit/go-simple-mail)
+- Import into project
+  ```go get github.com/xhit/go-simple-mail/v2```
+- Add mailer helper functions
+    ```shell
+    ni cmd/api/mailer.go -type file -Value "package main`n`n"
+    md cmd/api/templates
+    ni cmd/api/templates/password-reset.html.gohtml -type file -Value "{{template `u{0022}base`u{0022} . }}`n`n{{define `u{0022}title`u{0022}}}`n`n{{end}}`n`n{{define `u{0022}content`u{0022}}}`n`n{{end}}"
+    ni cmd/api/templates/password-reset.plain.gohtml -type file -Value "{{template `u{0022}base`u{0022} . }}`n`n{{define `u{0022}title`u{0022}}}`n`n{{end}}`n`n{{define `u{0022}content`u{0022}}}`n`n{{end}}"
+    ```
+
 
 
 

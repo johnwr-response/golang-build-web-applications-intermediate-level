@@ -81,9 +81,10 @@ All of these components (front end, back end, and microservice) will be built us
   - Also, the chi cors middleware [link](https://github.com/go-chi/cors)
 - Uses the Go library for the Stripe API [link](https://github.com/stripe/stripe-go)
 - Uses the Go MySQL Driver [link](https://github.com/go-sql-driver/mysql)
-  - Indirectly uses: [filippo.io/edwards25519](filippo.io/edwards25519)
-- Uses the bcrypt adaptive hashing algorithm [link](golang.org/x/crypto/bcrypt)
+  - Indirectly uses: [APIs to build a wide array of higher-level primitives](https://pkg.go.dev/filippo.io/edwards25519#section-readme)
+- Uses the bcrypt adaptive hashing algorithm [link](https://golang.org/x/crypto/bcrypt)
 - Uses the SCS - HTTP Session Management for Go [link](https://github.com/alexedwards/scs)
   - Also, the session store for mysql [link](https://github.com/alexedwards/scs/tree/master/mysqlstore)
-
+- Uses the Go Simple Mail [link](https://github.com/xhit/go-simple-mail)
+  - Indirectly uses: [DKIM (DomainKeys Identified Mail) package for golang](https://github.com/toorop/go-dkim)
 
