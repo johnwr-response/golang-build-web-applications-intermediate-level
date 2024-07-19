@@ -413,8 +413,8 @@ How to ensure our users are valid
     ```shell
     ni cmd/api/mailer.go -type file -Value "package main`n`n"
     md cmd/api/templates
-    ni cmd/api/templates/password-reset.html.gohtml -type file -Value "{{template `u{0022}base`u{0022} . }}`n`n{{define `u{0022}title`u{0022}}}`n`n{{end}}`n`n{{define `u{0022}content`u{0022}}}`n`n{{end}}"
-    ni cmd/api/templates/password-reset.plain.gohtml -type file -Value "{{template `u{0022}base`u{0022} . }}`n`n{{define `u{0022}title`u{0022}}}`n`n{{end}}`n`n{{define `u{0022}content`u{0022}}}`n`n{{end}}"
+    ni cmd/api/templates/password-reset.html.gohtml -type file -Value "{{define `u{0022}body`u{0022}}}`n`n{{end}}"
+    ni cmd/api/templates/password-reset.plain.gohtml -type file -Value "{{define `u{0022}body`u{0022}}}`n`n{{end}}"
     ```
 ### MailTrap.io
 - MailTrap Email Delivery Platform is the toolset to test, send, and control your emails in one place.
@@ -424,6 +424,7 @@ How to ensure our users are valid
   - Port: `25, 465, 587 or 2525`
   - Username: `25853d08526311`
   - Password: `399982fbb4cbe9`
+### Sending mail Part II
 
 
 
