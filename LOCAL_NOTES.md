@@ -382,6 +382,7 @@ How to ensure our users are valid
 
 ## Protecting routes on the Front End and improving authentication
 ### Writing middleware on the front end to check authentication
+### Protecting routes on the front end
 
 
 

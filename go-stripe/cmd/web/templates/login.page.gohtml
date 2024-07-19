@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-md-6 offset-md-3">
             <div class="alert alert-danger text-center d-none" id="login-messages"></div>
-            <form action="" method="post" name="login-form" id="login-form"
+            <form action="/login" method="post" name="login-form" id="login-form"
                   class="d-block needs-validation" autocomplete="off" novalidate="novalidate">
 
                 <h2 class="mt-2 text-center mb-3">Login</h2>
@@ -80,7 +80,8 @@
                         localStorage.setItem('token', data.authentication_token.plain_text);
                         localStorage.setItem('token_expiry', data.authentication_token.expiry);
                         showSuccess();
-                        location.href = "/";
+                        // location.href = "/";
+                        document.getElementById("login-form").submit()
                     } else {
                         showError(data.message);
                     }
