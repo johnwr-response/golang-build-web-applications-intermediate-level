@@ -78,8 +78,12 @@ All of these components (front end, back end, and microservice) will be built us
 - Folder is [go-stripe](go-stripe)
 - Built in Go version 1.22.4
 - Uses the chi router [link](https://github.com/go-chi/chi)
-- Uses the chi cors middleware [link](https://github.com/go-chi/cors)
+  - Also, the chi cors middleware [link](https://github.com/go-chi/cors)
 - Uses the Go library for the Stripe API [link](https://github.com/stripe/stripe-go)
 - Uses the Go MySQL Driver [link](https://github.com/go-sql-driver/mysql)
   - Indirectly uses: [filippo.io/edwards25519](filippo.io/edwards25519)
+- Uses the bcrypt adaptive hashing algorithm [link](golang.org/x/crypto/bcrypt)
 - Uses the SCS - HTTP Session Management for Go [link](https://github.com/alexedwards/scs)
+  - Also, the session store for mysql [link](https://github.com/alexedwards/scs/tree/master/mysqlstore)
+
+

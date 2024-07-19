@@ -384,8 +384,19 @@ How to ensure our users are valid
 ### Writing middleware on the front end to check authentication
 ### Protecting routes on the front end
 ### Logging out from the front end
-
-
+### Saving sessions in the database
+- SCS Feature: Session Stores
+  - By default, SCS uses an in-memory store for session data. This is convenient (no setup!) and very fast, but all 
+    session data will be lost when your application is stopped or restarted.  In most production applications you will 
+    want to use a persistent session store instead. SCS currently supports most major different DBMSs like MySQL, 
+    PostgresSql, Consul, Etcd, Redis and more. And in addition you can make your own custom store.
+    - [MySQL/MariaDB](https://github.com/alexedwards/scs/tree/master/mysqlstore)
+    - [PostgresSQL](https://github.com/alexedwards/scs/tree/master/postgresstore)
+    - ...
+  - To install:  
+    `go get github.com/alexedwards/scs/mysqlstore`
+- Generate a migration for creating sessions table0
+  `soda generate sql CreateSessionsTable`
 
 
 
