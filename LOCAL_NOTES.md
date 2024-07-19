@@ -445,6 +445,12 @@ How to ensure our users are valid
     ```
 ### Creating a back end route to handle password resets
 ### Setting an expiry for password reset emails
+### Adding an encryption package
+- Add encryption internal package
+    ```shell
+    md internal/encryption
+    ni internal/encryption/encryption.go -type file -Value "package encryption`n`n"
+    ```
 
 
 
