@@ -453,11 +453,13 @@ How to ensure our users are valid
     ```
 ### Using our encryption package to lock down password resets
 
-
-
-
-
 ## Building Admin pages to manage purchases
+### Improving our front end and setting up an Admin menu
+
+
+
+
+
 ## Refunds
 ## Cancelling Subscriptions
 ## Paginating Data

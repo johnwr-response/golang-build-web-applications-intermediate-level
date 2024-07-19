@@ -36,10 +36,15 @@ func formatCurrency(n int, currency string) string {
 //go:embed templates
 var templateFS embed.FS
 
-func (app *application) addDefaultData(td *templateData, _ *http.Request) *templateData {
+func (app *application) addDefaultData(td *templateData, r *http.Request) *templateData {
 	td.API = app.config.api
 	td.StripeSecretKey = app.config.stripe.secret
 	td.StripePublishableKey = app.config.stripe.key
+	if app.Session.Exists(r.Context(), "userID") {
+		td.IsAuthenticated = true
+	} else {
+		td.IsAuthenticated = false
+	}
 	return td
 }
 
