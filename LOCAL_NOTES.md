@@ -438,6 +438,11 @@ How to ensure our users are valid
     ```
 ### Using our urlSigner package
 ### Creating the reset password route and handler
+### Setting up the reset password page
+- Adding a template page for the reset password page
+    ```shell
+    ni cmd/web/templates/reset-password.page.gohtml -type file -Value "{{template `u{0022}base`u{0022} . }}`n`n{{define `u{0022}title`u{0022}}}`n`n{{end}}`n`n{{define `u{0022}content`u{0022}}}`n`n{{end}}"
+    ```
 
 
 
