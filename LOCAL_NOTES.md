@@ -461,7 +461,11 @@ How to ensure our users are valid
     ni cmd/web/templates/all-sales.page.gohtml -type file -Value "{{template `u{0022}base`u{0022} . }}`n`n{{define `u{0022}title`u{0022}}}`n`n{{end}}`n`n{{define `u{0022}content`u{0022}}}`n`n{{end}}"
     ni cmd/web/templates/all-subscriptions.page.gohtml -type file -Value "{{template `u{0022}base`u{0022} . }}`n`n{{define `u{0022}title`u{0022}}}`n`n{{end}}`n`n{{define `u{0022}content`u{0022}}}`n`n{{end}}"
     ```
-
+### Updating migrations and resetting the database
+- Generate a migration for seeding widgets
+  `soda generate fizz SeedWidgets`
+- To reset the database to factory defaults
+  `soda reset`
 
 
 
