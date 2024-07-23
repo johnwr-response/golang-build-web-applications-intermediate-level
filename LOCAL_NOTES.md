@@ -485,6 +485,7 @@ How to ensure our users are valid
           o.created_at DESC
     ```
 ### Listing all sales: database function
+### Listing all sales: writing the API handler and route
 
 
 
