@@ -484,6 +484,7 @@ How to ensure our users are valid
       ORDER BY
           o.created_at DESC
     ```
+### Listing all sales: database function
 
 
 
