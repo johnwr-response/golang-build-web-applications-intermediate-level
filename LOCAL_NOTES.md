@@ -489,6 +489,7 @@ How to ensure our users are valid
 ### Listing all sales: front end javascript
 ### Displaying our results in a table
 ### Making our table prettier, and adding some checks in JavaScript
+### Solution to challenge
 
 
 

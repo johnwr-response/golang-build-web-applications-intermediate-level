@@ -483,3 +483,12 @@ func (app *application) AllSales(w http.ResponseWriter, r *http.Request) {
 	}
 	_ = app.writeJSON(w, http.StatusOK, allSales)
 }
+
+func (app *application) AllSubscriptions(w http.ResponseWriter, r *http.Request) {
+	allSales, err := app.DB.GetAllSubscriptions()
+	if err != nil {
+		_ = app.badRequest(w, r, err)
+		return
+	}
+	_ = app.writeJSON(w, http.StatusOK, allSales)
+}
