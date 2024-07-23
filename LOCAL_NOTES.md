@@ -487,6 +487,7 @@ How to ensure our users are valid
 ### Listing all sales: database function
 ### Listing all sales: writing the API handler and route
 ### Listing all sales: front end javascript
+### Displaying our results in a table
 
 
 
