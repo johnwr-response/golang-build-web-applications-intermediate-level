@@ -466,6 +466,24 @@ How to ensure our users are valid
   `soda generate fizz SeedWidgets`
 - To reset the database to factory defaults
   `soda reset`
+### Listing all sales: database query
+- SQL to use
+    ```mariadb
+      SELECT
+          o.id, o.widget_id, o.transaction_id, o.customer_id, o.status_id, o.quantity, o.amount, o.created_at, o.updated_at,
+          w.id, w.name,
+          t.id, t.amount, t.currency, t.last_four, t.expiry_month, t.expiry_year, t.payment_intent, t.bank_return_code,
+          c.id, c.first_name, c.last_name, c.email
+      FROM
+          orders o
+          LEFT JOIN widgets w ON (o.widget_id = w.id)
+          LEFT JOIN transactions t ON (o.transaction_id = t.id)
+          LEFT JOIN customers c ON (o.customer_id = c.id)
+      WHERE
+          w.is_recurring = 0
+      ORDER BY
+          o.created_at DESC
+    ```
 
 
 
