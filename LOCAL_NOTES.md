@@ -455,6 +455,12 @@ How to ensure our users are valid
 
 ## Building Admin pages to manage purchases
 ### Improving our front end and setting up an Admin menu
+### Setting up stub pages for sales and subscriptions
+- Adding new templates page for the all-sales and all-subscriptions pages
+    ```shell
+    ni cmd/web/templates/all-sales.page.gohtml -type file -Value "{{template `u{0022}base`u{0022} . }}`n`n{{define `u{0022}title`u{0022}}}`n`n{{end}}`n`n{{define `u{0022}content`u{0022}}}`n`n{{end}}"
+    ni cmd/web/templates/all-subscriptions.page.gohtml -type file -Value "{{template `u{0022}base`u{0022} . }}`n`n{{define `u{0022}title`u{0022}}}`n`n{{end}}`n`n{{define `u{0022}content`u{0022}}}`n`n{{end}}"
+    ```
 
 
 
