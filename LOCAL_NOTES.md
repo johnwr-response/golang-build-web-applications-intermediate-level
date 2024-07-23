@@ -488,6 +488,7 @@ How to ensure our users are valid
 ### Listing all sales: writing the API handler and route
 ### Listing all sales: front end javascript
 ### Displaying our results in a table
+### Making our table prettier, and adding some checks in JavaScript
 
 
 
