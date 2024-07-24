@@ -519,6 +519,7 @@ How to ensure our users are valid
 - [Cancel subscriptions in Stripe](https://docs.stripe.com/billing/subscriptions/cancel)
 ### Creating a handler to cancel a subscription
 ### Modifying the front end
+### Finishing up the front end
 
 
 ## Paginating Data
