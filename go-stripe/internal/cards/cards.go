@@ -121,6 +121,7 @@ func (c *Card) CreateCustomer(pm, email string) (*stripe.Customer, string, error
 	return newCustomer, "", nil
 }
 
+// Refund refunds an amount for a paymentIntent
 func (c *Card) Refund(pi string, amount int) error {
 	stripe.Key = c.Secret
 	amountToRefund := int64(amount)
@@ -129,6 +130,19 @@ func (c *Card) Refund(pi string, amount int) error {
 		PaymentIntent: &pi,
 	}
 	_, err := refund.New(refundParams)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+// CancelSubscription cancels a subscription
+func (c *Card) CancelSubscription(subID string) error {
+	stripe.Key = c.Secret
+	params := &stripe.SubscriptionParams{
+		CancelAtPeriodEnd: stripe.Bool(true),
+	}
+	_, err := subscription.Update(subID, params)
 	if err != nil {
 		return err
 	}
