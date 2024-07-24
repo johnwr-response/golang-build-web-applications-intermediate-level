@@ -527,6 +527,7 @@ How to ensure our users are valid
 ### Updating the all-sales.page.gohtml template
 ### Improving pagination on the front end
 ### Adding listeners to page navigation buttons
+### Taking user to correct page of data on click
 
 
 

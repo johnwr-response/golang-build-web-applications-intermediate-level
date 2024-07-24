@@ -21,7 +21,9 @@
             </tbody>
         </table>
         <nav>
-            <ul class="pagination" id="paginator"></ul>
+            <ul class="pagination" id="paginator">
+
+            </ul>
         </nav>
 {{end}}
 
@@ -43,8 +45,9 @@
                 pageButtons[j].addEventListener("click", function (evt){
                     let desiredPage = evt.target.getAttribute("data-page");
                     console.log("clicked, and data-page is", desiredPage);
-                    if ((desiredPage > 0) && (desiredPage <= pages)) {
+                    if ((desiredPage > 0) && (desiredPage <= pages + 1)) {
                         console.log("would go to page", desiredPage);
+                        updateTable(pageSize, desiredPage);
                     }
                 })
             }
@@ -54,8 +57,8 @@
             let token = localStorage.getItem("token");
             let tbody = document.getElementById("sales-table").getElementsByTagName("tbody")[0];
             let body = {
-                page_size: ps,
-                page: cp,
+                page_size: parseInt(ps, 10),
+                page: parseInt(cp, 10),
             }
             const requestOptions = {
                 method: 'post',
@@ -70,6 +73,7 @@
                 .then(response => response.json())
                 .then(function (data) {
                     if (data.orders) {
+                        tbody.innerHTML = ""
                         data.orders.forEach(function (i) {
                             let newRow = tbody.insertRow();
 
@@ -101,7 +105,7 @@
                     } else {
                         let newRow = tbody.insertRow();
                         let newCell = newRow.insertCell();
-                        newCell.setAttribute("colspan", "4");
+                        newCell.setAttribute("colspan", "5");
                         newCell.innerHTML = "No data available";
                     }
                 })
