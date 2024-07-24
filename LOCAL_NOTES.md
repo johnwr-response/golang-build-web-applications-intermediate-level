@@ -525,6 +525,7 @@ How to ensure our users are valid
 ### Creating a database method to paginate all orders
 ### Modifying the AllSales handler to use paginated data
 ### Updating the all-sales.page.gohtml template
+### Improving pagination on the front end
 
 
 
