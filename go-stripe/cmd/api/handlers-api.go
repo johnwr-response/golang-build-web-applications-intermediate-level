@@ -11,6 +11,7 @@ import (
 	"github.com/johnwr-response/golang-build-web-applications-intermediate-level/go-stripe/internal/urlSigner"
 	"github.com/stripe/stripe-go/v79"
 	"golang.org/x/crypto/bcrypt"
+	"log"
 	"net/http"
 	"strconv"
 	"strings"
@@ -512,16 +513,16 @@ func (app *application) GetSale(w http.ResponseWriter, r *http.Request) {
 func (app *application) RefundCharge(w http.ResponseWriter, r *http.Request) {
 	var chargeToRefund struct {
 		ID            int    `json:"id"`
-		PaymentIntent string `json:"paymentIntent"`
+		PaymentIntent string `json:"pi"`
 		Amount        int    `json:"amount"`
 		Currency      string `json:"currency"`
 	}
-
 	err := app.readJSON(w, r, &chargeToRefund)
 	if err != nil {
 		_ = app.badRequest(w, r, err)
 		return
 	}
+	log.Println(chargeToRefund)
 
 	// should validate amount against the database
 	// to ensure it's not greater than the original purchase or hasn't already been refunded etc.

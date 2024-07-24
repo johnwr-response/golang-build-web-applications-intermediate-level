@@ -506,6 +506,9 @@ How to ensure our users are valid
 ### Adding a refund function to our cards package
 - [Refund and cancel payments in Stripe](https://docs.stripe.com/refunds)
 ### Creating an API handler to process refunds
+### Update the front end for refunds
+- sweetalert2 - A beautiful, responsive, highly customizable and accessible (WAI-ARIA) replacement for JavaScript's popup boxes. Zero dependencies.
+  [GitHub](https://github.com/sweetalert2/sweetalert2)
 
 
 
