@@ -498,10 +498,15 @@ How to ensure our users are valid
 ### Displaying a sale: part 2
 ### Displaying a subscription
 
-
-
-
 ## Refunds
+### Refunds from the Stripe Dashboard
+- Refunds can be made in the Stripe Dashboard, however that will not reflect in our admin
+  - We could set up a stripe webhook to fire up a request to our own api
+  - Or we could implement refund functionality in our own application
+
+
+
+
 ## Cancelling Subscriptions
 ## Paginating Data
 ## Managing Users
