@@ -505,6 +505,7 @@ How to ensure our users are valid
   - Or we could implement refund functionality in our own application
 ### Adding a refund function to our cards package
 - [Refund and cancel payments in Stripe](https://docs.stripe.com/refunds)
+### Creating an API handler to process refunds
 
 
 
