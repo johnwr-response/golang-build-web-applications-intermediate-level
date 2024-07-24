@@ -541,6 +541,7 @@ How to ensure our users are valid
 ### Writing the database functions to manage users
 ### Creating a handler and route for all users on the back end
 ### Updating the front end to call AllUsers
+### Displaying the list of users
 
 
 ## Microservices
