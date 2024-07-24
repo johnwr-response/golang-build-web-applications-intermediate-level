@@ -509,6 +509,8 @@ How to ensure our users are valid
 ### Update the front end for refunds
 - sweetalert2 - A beautiful, responsive, highly customizable and accessible (WAI-ARIA) replacement for JavaScript's popup boxes. Zero dependencies.
   [GitHub](https://github.com/sweetalert2/sweetalert2)
+### Improving the front end
+
 
 
 
