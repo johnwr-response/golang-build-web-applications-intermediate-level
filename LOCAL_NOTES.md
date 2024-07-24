@@ -526,6 +526,7 @@ How to ensure our users are valid
 ### Modifying the AllSales handler to use paginated data
 ### Updating the all-sales.page.gohtml template
 ### Improving pagination on the front end
+### Adding listeners to page navigation buttons
 
 
 

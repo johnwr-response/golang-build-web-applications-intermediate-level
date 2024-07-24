@@ -28,7 +28,7 @@
 {{define "js"}}
     <script>
         let currentPage = 1;
-        let pageSize = 3;
+        let pageSize = 5;
 
         function paginator(pages, currPage) {
             let p = document.getElementById("paginator");
@@ -38,6 +38,16 @@
             }
             html += `<li class="page-item"><a href="javascript:" class="page-link pager" data-page="${currPage + 1}">&gt;</a></li>`;
             p.innerHTML = html;
+            let pageButtons = document.getElementsByClassName("pager");
+            for (let j = 0; j < pageButtons.length; j++) {
+                pageButtons[j].addEventListener("click", function (evt){
+                    let desiredPage = evt.target.getAttribute("data-page");
+                    console.log("clicked, and data-page is", desiredPage);
+                    if ((desiredPage > 0) && (desiredPage <= pages)) {
+                        console.log("would go to page", desiredPage);
+                    }
+                })
+            }
         }
 
         function updateTable(ps, cp) {
