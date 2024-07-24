@@ -503,7 +503,8 @@ How to ensure our users are valid
 - Refunds can be made in the Stripe Dashboard, however that will not reflect in our admin
   - We could set up a stripe webhook to fire up a request to our own api
   - Or we could implement refund functionality in our own application
-
+### Adding a refund function to our cards package
+- [Refund and cancel payments in Stripe](https://docs.stripe.com/refunds)
 
 
 
