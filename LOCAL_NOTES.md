@@ -513,10 +513,11 @@ How to ensure our users are valid
 ### Adding UI components to the sales page
 ### Updating status to refunded in the database
 
-
-
-
 ## Cancelling Subscriptions
+### Capturing the subscription id
+
+
+
 ## Paginating Data
 ## Managing Users
 ## Microservices
