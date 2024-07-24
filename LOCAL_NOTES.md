@@ -530,9 +530,16 @@ How to ensure our users are valid
 ### Taking user to correct page of data on click
 ### How I implemented pagination on the all subscriptions page
 
-
-
 ## Managing Users
+### Setting up templates to manage users
+- Adding new template pages for the users
+    ```shell
+    ni cmd/web/templates/all-users.page.gohtml -type file -Value "{{template `u{0022}base`u{0022} . }}`n`n{{define `u{0022}title`u{0022}}}`n`n{{end}}`n`n{{define `u{0022}content`u{0022}}}`n`n{{end}}"
+    ni cmd/web/templates/one-user.page.gohtml -type file -Value "{{template `u{0022}base`u{0022} . }}`n`n{{define `u{0022}title`u{0022}}}`n`n{{end}}`n`n{{define `u{0022}content`u{0022}}}`n`n{{end}}"
+    ```
+
+
+
 ## Microservices
 ## Validation
 ## Where to go next
