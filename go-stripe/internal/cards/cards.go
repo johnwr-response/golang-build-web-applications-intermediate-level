@@ -136,7 +136,7 @@ func (c *Card) Refund(pi string, amount int) error {
 	return nil
 }
 
-// CancelSubscription cancels a subscription
+// CancelSubscription cancels a subscription, by subscription id
 func (c *Card) CancelSubscription(subID string) error {
 	stripe.Key = c.Secret
 	params := &stripe.SubscriptionParams{
