@@ -528,6 +528,7 @@ How to ensure our users are valid
 ### Improving pagination on the front end
 ### Adding listeners to page navigation buttons
 ### Taking user to correct page of data on click
+### How I implemented pagination on the all subscriptions page
 
 
 
