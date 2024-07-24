@@ -508,18 +508,3 @@ func (app *application) GetSale(w http.ResponseWriter, r *http.Request) {
 	_ = app.writeJSON(w, http.StatusOK, order)
 
 }
-func (app *application) GetSubscription(w http.ResponseWriter, r *http.Request) {
-	id := chi.URLParam(r, "id")
-	orderID, err := strconv.Atoi(id)
-	if err != nil {
-		_ = app.badRequest(w, r, err)
-		return
-	}
-	order, err := app.DB.GetOrderByID(orderID)
-	if err != nil {
-		_ = app.badRequest(w, r, err)
-		return
-	}
-	_ = app.writeJSON(w, http.StatusOK, order)
-
-}

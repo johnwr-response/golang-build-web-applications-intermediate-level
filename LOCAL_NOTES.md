@@ -491,12 +491,12 @@ How to ensure our users are valid
 ### Making our table prettier, and adding some checks in JavaScript
 ### Solution to challenge
 ### Displaying a sale: part 1
-- Adding new templates pages for the sale and subscription pages
+- Adding new template page for the sale and subscription pages
     ```shell
     ni cmd/web/templates/sale.page.gohtml -type file -Value "{{template `u{0022}base`u{0022} . }}`n`n{{define `u{0022}title`u{0022}}}`n`n{{end}}`n`n{{define `u{0022}content`u{0022}}}`n`n{{end}}"
-    ni cmd/web/templates/subscription.page.gohtml -type file -Value "{{template `u{0022}base`u{0022} . }}`n`n{{define `u{0022}title`u{0022}}}`n`n{{end}}`n`n{{define `u{0022}content`u{0022}}}`n`n{{end}}"
     ```
 ### Displaying a sale: part 2
+### Displaying a subscription
 
 
 
