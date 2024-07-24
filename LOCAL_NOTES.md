@@ -540,6 +540,7 @@ How to ensure our users are valid
 ### Adding routes and handlers on the front end
 ### Writing the database functions to manage users
 ### Creating a handler and route for all users on the back end
+### Updating the front end to call AllUsers
 
 
 ## Microservices
