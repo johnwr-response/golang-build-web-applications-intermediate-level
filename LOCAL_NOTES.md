@@ -521,8 +521,12 @@ How to ensure our users are valid
 ### Modifying the front end
 ### Finishing up the front end
 
-
 ## Paginating Data
+### Creating a database method to paginate all orders
+
+
+
+
 ## Managing Users
 ## Microservices
 ## Validation
