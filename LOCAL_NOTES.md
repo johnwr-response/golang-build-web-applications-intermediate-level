@@ -523,7 +523,7 @@ How to ensure our users are valid
 
 ## Paginating Data
 ### Creating a database method to paginate all orders
-
+### Modifying the AllSales handler to use paginated data
 
 
 
