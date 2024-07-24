@@ -518,6 +518,7 @@ How to ensure our users are valid
 ### Adding a CancelSubscription function to our cards package
 - [Cancel subscriptions in Stripe](https://docs.stripe.com/billing/subscriptions/cancel)
 ### Creating a handler to cancel a subscription
+### Modifying the front end
 
 
 ## Paginating Data
