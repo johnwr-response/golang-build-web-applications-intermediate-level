@@ -562,8 +562,12 @@ How to ensure our users are valid
 ### Connecting to WebSockets from the browser
 ### Logging the deleted user out over websockets
 
-
-
 ## Microservices
+### What are microservices?
+Microservices, or microservices architecture, is a cloud-native architectural approach in which a single
+application is composed of many loosely coupled and independently deployable smaller components or services.
+- [What are microservices?](https://www.ibm.com/topics/microservices)
+
+
 ## Validation
 ## Where to go next
