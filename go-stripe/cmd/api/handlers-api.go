@@ -647,6 +647,7 @@ func (app *application) AllUsers(w http.ResponseWriter, r *http.Request) {
 	_ = app.writeJSON(w, http.StatusOK, allUsers)
 }
 
+// OneUser gets one user by id (from the url) and returns it as JSON
 func (app *application) OneUser(w http.ResponseWriter, r *http.Request) {
 	id := chi.URLParam(r, "id")
 	userID, _ := strconv.Atoi(id)
@@ -703,5 +704,22 @@ func (app *application) EditUser(w http.ResponseWriter, r *http.Request) {
 	}
 	resp.Error = false
 	resp.Message = "User successfully updated"
+	_ = app.writeJSON(w, http.StatusOK, resp)
+}
+
+func (app *application) DeleteUser(w http.ResponseWriter, r *http.Request) {
+	id := chi.URLParam(r, "id")
+	userID, _ := strconv.Atoi(id)
+	err := app.DB.DeleteUser(userID)
+	if err != nil {
+		_ = app.badRequest(w, r, err)
+		return
+	}
+	var resp struct {
+		Error   bool   `json:"error"`
+		Message string `json:"message"`
+	}
+	resp.Error = false
+	resp.Message = "User successfully deleted"
 	_ = app.writeJSON(w, http.StatusOK, resp)
 }

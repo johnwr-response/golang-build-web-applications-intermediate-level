@@ -548,6 +548,7 @@ How to ensure our users are valid
 ### Solution to challenge
 ### Saving an edited user - part one
 ### Saving an edited user - part two
+### Deleting a user
 
 
 ## Microservices
