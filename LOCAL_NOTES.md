@@ -567,7 +567,14 @@ How to ensure our users are valid
 Microservices, or microservices architecture, is a cloud-native architectural approach in which a single
 application is composed of many loosely coupled and independently deployable smaller components or services.
 - [What are microservices?](https://www.ibm.com/topics/microservices)
-
+### Setting up a simple microservice
+- Add invoice microservice package
+   ```shell
+  md cmd/micro/invoice
+  ni cmd/micro/invoice/invoice.go -type file -Value "package main`n`n"
+  ni cmd/micro/invoice/invoice-routes.go -type file -Value "package main`n`n"
+  ni cmd/micro/invoice/invoice-handlers.go -type file -Value "package main`n`n"
+  ```
 
 ## Validation
 ## Where to go next
