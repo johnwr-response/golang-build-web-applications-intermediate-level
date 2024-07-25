@@ -549,6 +549,7 @@ How to ensure our users are valid
 ### Saving an edited user - part one
 ### Saving an edited user - part two
 ### Deleting a user
+### Removing the deleted users token from the database
 
 
 ## Microservices
