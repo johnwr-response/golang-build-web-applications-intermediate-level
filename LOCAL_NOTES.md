@@ -560,6 +560,7 @@ How to ensure our users are valid
   ni cmd/web/ws-handlers.go -type file -Value "package main`n`n"
   ```
 ### Connecting to WebSockets from the browser
+### Logging the deleted user out over websockets
 
 
 

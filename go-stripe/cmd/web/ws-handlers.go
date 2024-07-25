@@ -15,6 +15,7 @@ type WsPayload struct {
 	Message     string              `json:"message"`
 	UserName    string              `json:"username"`
 	MessageType string              `json:"message_type"`
+	UserID      int                 `json:"user_id"`
 	Conn        WebSocketConnection `json:"-"`
 }
 
@@ -84,6 +85,7 @@ func (app *application) ListenToWSChannel() {
 		case "deleteUser":
 			response.Action = "logout"
 			response.Message = "Your account has been deleted"
+			response.UserID = event.UserID
 			app.broadcastToAll(response)
 		default:
 		}
