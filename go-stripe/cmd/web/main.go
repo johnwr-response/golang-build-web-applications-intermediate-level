@@ -106,6 +106,9 @@ func main() {
 		DB:            models.DBModel{DB: conn},
 		Session:       session,
 	}
+
+	go app.ListenToWSChannel()
+
 	err = app.serve()
 	if err != nil {
 		app.errorLog.Println(err)

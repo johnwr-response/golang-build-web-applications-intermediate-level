@@ -91,3 +91,4 @@ All of these components (front end, back end, and microservice) will be built us
 - Uses the Go-Alone package [link](https://github.com/bwmarrin/go-alone)
   - Indirectly uses: [supplemental Go packages for low-level interactions with the operating system](https://pkg.go.dev/golang.org/x/sys)
 - Uses the SweetAlert package [link](https://github.com/sweetalert2/sweetalert2)
+- Uses the WebSocket package [link](https://github.com/smantic/websocket)

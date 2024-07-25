@@ -550,6 +550,16 @@ How to ensure our users are valid
 ### Saving an edited user - part two
 ### Deleting a user
 ### Removing the deleted users token from the database
+### Setting up websockets
+- WebSocket - A fast, well-tested and widely used WebSocket implementation for Go.
+  [link](https://github.com/smantic/websocket)
+- Import into project
+  ```go get go.smantic.dev/websocket```
+- Add a web socket handlers file
+  ```shell
+  ni cmd/web/ws-handlers.go -type file -Value "package main`n`n"
+  ```
+
 
 
 ## Microservices
