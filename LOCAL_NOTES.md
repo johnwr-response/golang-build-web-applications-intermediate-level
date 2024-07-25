@@ -559,6 +559,7 @@ How to ensure our users are valid
   ```shell
   ni cmd/web/ws-handlers.go -type file -Value "package main`n`n"
   ```
+### Connecting to WebSockets from the browser
 
 
 
