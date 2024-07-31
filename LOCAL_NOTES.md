@@ -600,6 +600,8 @@ application is composed of many loosely coupled and independently deployable sma
   ni cmd/micro/invoice/email-templates/invoice.plain.gohtml -type file -Value "{{define `u{0022}body`u{0022}}}`n`n{{end}}"
   ```
 ### Call the microservice when a Widget is sold
+### Challenge
+- Use the microservice when subscribing to a plan (in the backend) 
 
 
 ## Validation
