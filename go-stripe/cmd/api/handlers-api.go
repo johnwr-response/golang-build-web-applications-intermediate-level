@@ -10,6 +10,7 @@ import (
 	"github.com/johnwr-response/golang-build-web-applications-intermediate-level/go-stripe/internal/encryption"
 	"github.com/johnwr-response/golang-build-web-applications-intermediate-level/go-stripe/internal/models"
 	"github.com/johnwr-response/golang-build-web-applications-intermediate-level/go-stripe/internal/urlSigner"
+	"github.com/johnwr-response/golang-build-web-applications-intermediate-level/go-stripe/internal/validator"
 	"github.com/stripe/stripe-go/v79"
 	"golang.org/x/crypto/bcrypt"
 	"io"
@@ -42,6 +43,7 @@ type jsonResponse struct {
 	ID      int    `json:"id,omitempty"`
 }
 
+// GetPaymentIntent gets a payment intent and returns json
 func (app *application) GetPaymentIntent(w http.ResponseWriter, r *http.Request) {
 	var payload stripePayload
 	err := json.NewDecoder(r.Body).Decode(&payload)
@@ -131,6 +133,16 @@ func (app *application) CreateCustomerAndSubscribeToPlan(w http.ResponseWriter, 
 		return
 	}
 	app.infoLog.Println(data.Email, data.LastFour, data.PaymentMethod, data.Plan)
+
+	// validate data
+	v := validator.New()
+	v.Check(len(data.FirstName) > 1, "first_name", "must be at least two characters long")
+	v.Check(data.LastName == "", "last_name", "must be at least one character long")
+
+	if !v.Valid() {
+		app.failedValidation(w, r, v.Errors)
+		return
+	}
 
 	card := cards.Card{
 		Secret:   app.config.stripe.secret,
