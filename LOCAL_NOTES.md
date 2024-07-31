@@ -599,6 +599,7 @@ application is composed of many loosely coupled and independently deployable sma
   ni cmd/micro/invoice/email-templates/invoice.html.gohtml -type file -Value "{{define `u{0022}body`u{0022}}}`n`n{{end}}"
   ni cmd/micro/invoice/email-templates/invoice.plain.gohtml -type file -Value "{{define `u{0022}body`u{0022}}}`n`n{{end}}"
   ```
+### Call the microservice when a Widget is sold
 
 
 ## Validation

@@ -1,12 +1,15 @@
 package main
 
 import (
+	"bytes"
+	"encoding/json"
 	"fmt"
 	"github.com/go-chi/chi/v5"
 	"github.com/johnwr-response/golang-build-web-applications-intermediate-level/go-stripe/internal/cards"
 	"github.com/johnwr-response/golang-build-web-applications-intermediate-level/go-stripe/internal/encryption"
 	"github.com/johnwr-response/golang-build-web-applications-intermediate-level/go-stripe/internal/models"
 	"github.com/johnwr-response/golang-build-web-applications-intermediate-level/go-stripe/internal/urlSigner"
+	"io"
 	"log"
 	"net/http"
 	"strconv"
@@ -139,6 +142,24 @@ func (app *application) VirtualTerminalReceipt(w http.ResponseWriter, r *http.Re
 	}
 }
 
+type Invoice struct {
+	ID        int        `json:"id"`
+	Quantity  int        `json:"quantity"`
+	Amount    int        `json:"amount"`
+	Product   string     `json:"product"`
+	FirstName string     `json:"first_name"`
+	LastName  string     `json:"last_name"`
+	Email     string     `json:"email"`
+	CreatedAt time.Time  `json:"created_at"`
+	Items     []Products `json:"products"`
+}
+
+type Products struct {
+	Name     string `json:"name"`
+	Amount   int    `json:"amount"`
+	Quantity int    `json:"quantity"`
+}
+
 // PaymentSucceeded displays the receipt page
 func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request) {
 	err := r.ParseForm()
@@ -191,15 +212,56 @@ func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request)
 		CreatedAt:     time.Now(),
 		UpdatedAt:     time.Now(),
 	}
-	_, err = app.SaveOrder(order)
+	orderID, err := app.SaveOrder(order)
 	if err != nil {
 		app.errorLog.Println(err)
 		return
 	}
 
+	//call microservice
+	inv := Invoice{
+		ID:        orderID,
+		Amount:    order.Amount,
+		Product:   "Widget",
+		Quantity:  order.Quantity,
+		FirstName: txnData.FirstName,
+		LastName:  txnData.LastName,
+		Email:     txnData.Email,
+		CreatedAt: time.Now(),
+		Items:     nil,
+	}
+	err = app.callInvoiceMicro(inv)
+	if err != nil {
+		app.errorLog.Println(err)
+	}
+
 	// write this data to session, and then redirect user to new page
 	app.Session.Put(r.Context(), "receipt", txnData)
 	http.Redirect(w, r, "/receipt", http.StatusSeeOther)
+}
+
+func (app *application) callInvoiceMicro(inv Invoice) error {
+	url := app.config.invoice
+	app.infoLog.Println("Url: ", url)
+	out, err := json.MarshalIndent(inv, "", "\t")
+	if err != nil {
+		return err
+	}
+	req, err := http.NewRequest("POST", url, bytes.NewBuffer(out))
+	if err != nil {
+		return err
+	}
+	req.Header.Set("Content-Type", "application/json")
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		return err
+	}
+	defer func(Body io.ReadCloser) {
+		_ = Body.Close()
+	}(resp.Body)
+	app.infoLog.Println(resp.Body)
+	return nil
 }
 
 func (app *application) Receipt(w http.ResponseWriter, r *http.Request) {
