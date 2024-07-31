@@ -614,5 +614,8 @@ application is composed of many loosely coupled and independently deployable sma
 ### Adding validation on the API back end
 ### Modifying the front end javascript
 
-
 ## Where to go next
+### gRPC, SOA, and more
+- [GRPC](https://grpc.io/)
+- [Signals and Traps](https://www.tutorialspoint.com/unix/unix-signals-traps.htm)
+- [Graceful shutdown of worker goroutines](https://callistaenterprise.se/blogg/teknik/2019/10/05/go-worker-cancellation/)
