@@ -580,6 +580,17 @@ application is composed of many loosely coupled and independently deployable sma
   ```shell
   ni cmd/micro/invoice/helpers.go -type file -Value "package main`n`n"
   ```
+### Generating an invoice as a PDF
+- GoFPDF document generator - A PDF document generator with high level support for text, drawing and images
+  [link](https://github.com/go-pdf/fpdf)
+- Import into project
+  ```go get github.com/go-pdf/fpdf```
+- To enable pdf templates, import a contrib package and add a pdf-templates folder
+  ```shell
+  go get github.com/go-pdf/fpdf/contrib/gofpdi
+  md pdf-templates
+  ```
+
 
 ## Validation
 ## Where to go next

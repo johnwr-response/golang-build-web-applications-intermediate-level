@@ -92,3 +92,7 @@ All of these components (front end, back end, and microservice) will be built us
   - Indirectly uses: [supplemental Go packages for low-level interactions with the operating system](https://pkg.go.dev/golang.org/x/sys)
 - Uses the SweetAlert package [link](https://github.com/sweetalert2/sweetalert2)
 - Uses the WebSocket package [link](https://github.com/smantic/websocket)
+- Uses the GoFPDF document generator package [link](https://github.com/go-pdf/fpdf)
+  - Indirectly uses: contrib to import existing PDFs as templates
+    - [errors Go packages for Simple error handling primitives](https://github.com/pkg/errors)
+    - `phpdave11` GoFPDF document generator [link](https://github.com/phpdave11/gofpdf))
