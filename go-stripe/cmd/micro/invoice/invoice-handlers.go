@@ -9,14 +9,20 @@ import (
 )
 
 type Order struct {
-	ID        int       `json:"id"`
-	Quantity  int       `json:"quantity"`
-	Amount    int       `json:"amount"`
-	Product   string    `json:"product"`
-	FirstName string    `json:"first_name"`
-	LastName  string    `json:"last_name"`
-	Email     string    `json:"email"`
-	CreatedAt time.Time `json:"created_at"`
+	ID        int        `json:"id"`
+	Quantity  int        `json:"quantity"`
+	Amount    int        `json:"amount"`
+	Product   string     `json:"product"`
+	FirstName string     `json:"first_name"`
+	LastName  string     `json:"last_name"`
+	Email     string     `json:"email"`
+	CreatedAt time.Time  `json:"created_at"`
+	Items     []Products `json:"products"`
+}
+type Products struct {
+	Name     string `json:"name"`
+	Amount   int    `json:"amount"`
+	Quantity int    `json:"quantity"`
 }
 
 func (app *application) CreateAndSendInvoice(w http.ResponseWriter, r *http.Request) {
@@ -28,7 +34,21 @@ func (app *application) CreateAndSendInvoice(w http.ResponseWriter, r *http.Requ
 		return
 	}
 
+	//order.ID = 100
+	//order.Email = "me@here.com"
+	//order.FirstName = "John"
+	//order.LastName = "Smith"
+	//order.Quantity = 1
+	//order.Amount = 1000
+	//order.Product = "Widget"
+	//order.CreatedAt = time.Now()
+
 	// generate a pdf invoice
+	err = app.createInvoicePDF(order)
+	if err != nil {
+		_ = app.badRequest(w, r, err)
+		return
+	}
 
 	// create mail
 
@@ -64,8 +84,9 @@ func (app *application) createInvoicePDF(order Order) error {
 	pdf.Ln(5)
 	pdf.CellFormat(97, 8, order.CreatedAt.Format("2006-01-02"), "", 0, "L", false, 0, "")
 
-	pdf.SetY(58)
-	pdf.SetX(93)
+	// range through products
+	pdf.SetX(58)
+	pdf.SetY(93)
 	pdf.CellFormat(155, 8, order.Product, "", 0, "L", false, 0, "")
 	pdf.SetX(166)
 	pdf.CellFormat(20, 8, fmt.Sprintf("%d", order.Quantity), "", 0, "C", false, 0, "")

@@ -13,6 +13,7 @@
 
 # Other folders
 tmp/
+invoices/
 
 # Test binary, built with `go test -c`
 *.test

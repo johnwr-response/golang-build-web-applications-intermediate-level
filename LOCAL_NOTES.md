@@ -590,6 +590,7 @@ application is composed of many loosely coupled and independently deployable sma
   go get github.com/go-pdf/fpdf/contrib/gofpdi
   md pdf-templates
   ```
+### Testing our PDF
 
 
 ## Validation
