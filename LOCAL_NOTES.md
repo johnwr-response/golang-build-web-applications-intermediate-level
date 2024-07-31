@@ -569,11 +569,16 @@ application is composed of many loosely coupled and independently deployable sma
 - [What are microservices?](https://www.ibm.com/topics/microservices)
 ### Setting up a simple microservice
 - Add invoice microservice package
-   ```shell
+  ```shell
   md cmd/micro/invoice
   ni cmd/micro/invoice/invoice.go -type file -Value "package main`n`n"
   ni cmd/micro/invoice/invoice-routes.go -type file -Value "package main`n`n"
   ni cmd/micro/invoice/invoice-handlers.go -type file -Value "package main`n`n"
+  ```
+### Receiving data with our microservice
+- Add helpers file
+  ```shell
+  ni cmd/micro/invoice/helpers.go -type file -Value "package main`n`n"
   ```
 
 ## Validation
