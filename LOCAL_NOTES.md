@@ -604,6 +604,14 @@ application is composed of many loosely coupled and independently deployable sma
 - Use the microservice when subscribing to a plan (in the backend) 
 ### Solution
 
-
 ## Validation
+### Setting up a validation package
+- Create validator package
+  ```shell
+  md internal/validator
+  ni internal/validator/validator.go -type file -Value "package validator`n`n"
+  ```
+
+
+
 ## Where to go next
