@@ -602,6 +602,7 @@ application is composed of many loosely coupled and independently deployable sma
 ### Call the microservice when a Widget is sold
 ### Challenge
 - Use the microservice when subscribing to a plan (in the backend) 
+### Solution
 
 
 ## Validation

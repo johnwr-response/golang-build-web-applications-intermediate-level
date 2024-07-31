@@ -33,6 +33,7 @@ type config struct {
 	}
 	secretKey string
 	frontend  string
+	invoice   string
 }
 
 type application struct {
@@ -68,6 +69,7 @@ func main() {
 	flag.StringVar(&cfg.smtp.password, "smtp-password", "399982fbb4cbe9", "smtp password")
 	flag.StringVar(&cfg.secretKey, "secret-key", "JustABe2BeBlockOfBe2BeVeryRandom", "secret key")
 	flag.StringVar(&cfg.frontend, "frontend", "http://localhost:4000", "frontend url")
+	flag.StringVar(&cfg.invoice, "invoice-url", "http://localhost:5000/invoice/create-and-send", "invoice microservice url")
 	//flag.StringVar(&cfg.db.dsn, "dsn", "", "datasource")
 	flag.Parse()
 

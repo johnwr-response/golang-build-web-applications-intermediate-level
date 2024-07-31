@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -11,6 +12,7 @@ import (
 	"github.com/johnwr-response/golang-build-web-applications-intermediate-level/go-stripe/internal/urlSigner"
 	"github.com/stripe/stripe-go/v79"
 	"golang.org/x/crypto/bcrypt"
+	"io"
 	"log"
 	"net/http"
 	"strconv"
@@ -107,6 +109,20 @@ func (app *application) GetWidgetByID(w http.ResponseWriter, r *http.Request) {
 	_, _ = w.Write(out)
 }
 
+// Invoice describes the JSON payload sent to the microservice
+type Invoice struct {
+	ID        int       `json:"id"`
+	WidgetID  int       `json:"widget_id"`
+	Amount    int       `json:"amount"`
+	Product   string    `json:"product"`
+	Quantity  int       `json:"quantity"`
+	FirstName string    `json:"first_name"`
+	LastName  string    `json:"last_name"`
+	Email     string    `json:"email"`
+	CreatedAt time.Time `json:"created_at"`
+}
+
+// CreateCustomerAndSubscribeToPlan is the handler for subscribing to the bronze plan
 func (app *application) CreateCustomerAndSubscribeToPlan(w http.ResponseWriter, r *http.Request) {
 	var data stripePayload
 	err := json.NewDecoder(r.Body).Decode(&data)
@@ -178,10 +194,24 @@ func (app *application) CreateCustomerAndSubscribeToPlan(w http.ResponseWriter, 
 			Quantity:      1,
 			Amount:        amount,
 		}
-		_, err = app.SaveOrder(order)
+		orderID, err := app.SaveOrder(order)
 		if err != nil {
 			app.errorLog.Println(err)
 			return
+		}
+		inv := Invoice{
+			ID:        orderID,
+			Amount:    2000,
+			Product:   "Bronze Plan monthly subscription",
+			Quantity:  order.Quantity,
+			FirstName: data.FirstName,
+			LastName:  data.LastName,
+			Email:     data.Email,
+			CreatedAt: time.Time{},
+		}
+		err = app.callInvoiceMicro(inv)
+		if err != nil {
+			app.errorLog.Println(err)
 		}
 	}
 
@@ -196,6 +226,30 @@ func (app *application) CreateCustomerAndSubscribeToPlan(w http.ResponseWriter, 
 	}
 	w.Header().Set("Content-Type", "application/json")
 	_, _ = w.Write(out)
+}
+
+// callInvoiceMicro calls the invoicing microservice
+func (app *application) callInvoiceMicro(inv Invoice) error {
+	url := app.config.invoice
+	app.infoLog.Println("Url: ", url)
+	out, err := json.MarshalIndent(inv, "", "\t")
+	if err != nil {
+		return err
+	}
+	req, err := http.NewRequest("POST", url, bytes.NewBuffer(out))
+	if err != nil {
+		return err
+	}
+	req.Header.Set("Content-Type", "application/json")
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		return err
+	}
+	defer func(Body io.ReadCloser) {
+		_ = Body.Close()
+	}(resp.Body)
+	return nil
 }
 
 // SaveCustomer saves a customer and returns id
