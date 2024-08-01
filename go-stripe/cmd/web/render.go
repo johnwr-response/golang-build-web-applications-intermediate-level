@@ -38,9 +38,9 @@ func formatCurrency(n int, currency string) string {
 var templateFS embed.FS
 
 func (app *application) addDefaultData(td *templateData, r *http.Request) *templateData {
-	td.API = app.config.api
-	td.StripeSecretKey = app.config.stripe.secret
-	td.StripePublishableKey = app.config.stripe.key
+	td.API = app.config.Urls.Api
+	td.StripeSecretKey = app.config.Payment.Stripe.Secret
+	td.StripePublishableKey = app.config.Payment.Stripe.Key
 	if app.Session.Exists(r.Context(), "userID") {
 		td.IsAuthenticated = true
 		td.UserID = app.Session.GetInt(r.Context(), "userID")

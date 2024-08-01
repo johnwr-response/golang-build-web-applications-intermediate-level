@@ -619,3 +619,29 @@ application is composed of many loosely coupled and independently deployable sma
 - [GRPC](https://grpc.io/)
 - [Signals and Traps](https://www.tutorialspoint.com/unix/unix-signals-traps.htm)
 - [Graceful shutdown of worker goroutines](https://callistaenterprise.se/blogg/teknik/2019/10/05/go-worker-cancellation/)
+
+## Local additions
+
+### Viper
+Viper is a complete configuration solution for Go applications including 12-Factor apps. It is designed to work within 
+an application, and can handle all types of configuration needs and formats.
+- Viper - Go configuration with fangs
+  [link](https://github.com/spf13/viper)
+- Import into project
+  ```go get github.com/spf13/viper```
+- Create files and folders
+  ```shell
+  md internal/config
+  ni internal/config/config.go -type file -Value "package config`n`n"
+  ni internal/config/config.yml -type file -Value "web:`n`n"
+
+  md cmd/micro/config
+  ni cmd/micro/config/config.go -type file -Value "package config`n`n"
+  ni cmd/micro/config/config.yml -type file -Value "micro:`n`n"
+  ```
+- To override as environment variables: `parameter.to.override → PREFIX_PARAMETER_TO_OVERRIDE`
+  - Port -> APP_PORT
+  - Database.Port -> APP_DATABASE_PORT
+
+
+### ZeroLog

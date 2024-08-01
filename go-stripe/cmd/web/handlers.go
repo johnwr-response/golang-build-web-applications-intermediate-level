@@ -62,8 +62,8 @@ func (app *application) GetTransactionData(r *http.Request) (TransactionData, er
 	amount, _ := strconv.Atoi(paymentAmount)
 
 	card := cards.Card{
-		Secret: app.config.stripe.secret,
-		Key:    app.config.stripe.key,
+		Secret: app.config.Payment.Stripe.Secret,
+		Key:    app.config.Payment.Stripe.Key,
 	}
 
 	pi, err := card.RetrievePaymentIntent(paymentIntent)
@@ -241,7 +241,7 @@ func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request)
 }
 
 func (app *application) callInvoiceMicro(inv Invoice) error {
-	url := app.config.invoice
+	url := app.config.Urls.Invoice
 	app.infoLog.Println("Url: ", url)
 	out, err := json.MarshalIndent(inv, "", "\t")
 	if err != nil {
@@ -388,9 +388,9 @@ func (app *application) ForgotPassword(w http.ResponseWriter, r *http.Request) {
 func (app *application) ShowResetPassword(w http.ResponseWriter, r *http.Request) {
 	email := r.URL.Query().Get("email")
 	theURL := r.RequestURI
-	testURL := fmt.Sprintf("%s%s", app.config.frontend, theURL)
+	testURL := fmt.Sprintf("%s%s", app.config.Urls.Frontend, theURL)
 	signer := urlSigner.Signer{
-		Secret: []byte(app.config.secretKey),
+		Secret: []byte(app.config.SecretKey),
 	}
 	valid := signer.VerifyToken(testURL)
 	log.Println(valid)
@@ -407,7 +407,7 @@ func (app *application) ShowResetPassword(w http.ResponseWriter, r *http.Request
 	}
 
 	encryptor := encryption.Encryption{
-		Key: []byte(app.config.secretKey),
+		Key: []byte(app.config.SecretKey),
 	}
 	encryptedEmail, err := encryptor.Encrypt(email)
 	if err != nil {

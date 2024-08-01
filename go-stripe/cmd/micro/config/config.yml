@@ -1,0 +1,7 @@
+HostInterface: localhost
+Port: 5000
+SmtpHost: sandbox.smtp.mailtrap.io
+SmtpPort: 587
+SmtpUsername: 25853d08526311
+SmtpPassword: 399982fbb4cbe9
+Frontend: http://localhost:4000

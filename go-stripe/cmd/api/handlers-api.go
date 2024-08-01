@@ -59,8 +59,8 @@ func (app *application) GetPaymentIntent(w http.ResponseWriter, r *http.Request)
 	}
 
 	card := cards.Card{
-		Secret:   app.config.stripe.secret,
-		Key:      app.config.stripe.key,
+		Secret:   app.config.Payment.Stripe.Secret,
+		Key:      app.config.Payment.Stripe.Key,
 		Currency: payload.Currency,
 	}
 
@@ -144,8 +144,8 @@ func (app *application) CreateCustomerAndSubscribeToPlan(w http.ResponseWriter, 
 	}
 
 	card := cards.Card{
-		Secret:   app.config.stripe.secret,
-		Key:      app.config.stripe.key,
+		Secret:   app.config.Payment.Stripe.Secret,
+		Key:      app.config.Payment.Stripe.Key,
 		Currency: data.Currency,
 	}
 
@@ -158,6 +158,7 @@ func (app *application) CreateCustomerAndSubscribeToPlan(w http.ResponseWriter, 
 		app.errorLog.Println(err)
 		okay = false
 		txnMsg = msg
+		app.infoLog.Println("Stripe Create Customer Error: ", msg)
 	}
 
 	if okay {
@@ -166,6 +167,7 @@ func (app *application) CreateCustomerAndSubscribeToPlan(w http.ResponseWriter, 
 			app.errorLog.Println(err)
 			okay = false
 			txnMsg = "Error subscribing customer to plan"
+			app.infoLog.Println("Stripe Subscribe To Plan Error: ", msg)
 		}
 		app.infoLog.Println("subscription id is", subscription.ID)
 	}
@@ -230,6 +232,7 @@ func (app *application) CreateCustomerAndSubscribeToPlan(w http.ResponseWriter, 
 		OK:      okay,
 		Message: txnMsg,
 	}
+	app.infoLog.Println("Message: ", resp.Message)
 	out, err := json.MarshalIndent(resp, "", "  ")
 	if err != nil {
 		app.errorLog.Println(err)
@@ -241,7 +244,7 @@ func (app *application) CreateCustomerAndSubscribeToPlan(w http.ResponseWriter, 
 
 // callInvoiceMicro calls the invoicing microservice
 func (app *application) callInvoiceMicro(inv Invoice) error {
-	url := app.config.invoice
+	url := app.config.Urls.Invoice
 	app.infoLog.Println("Url: ", url)
 	out, err := json.MarshalIndent(inv, "", "\t")
 	if err != nil {
@@ -412,8 +415,8 @@ func (app *application) VirtualTerminalPaymentSucceeded(w http.ResponseWriter, r
 	}
 
 	card := cards.Card{
-		Secret: app.config.stripe.secret,
-		Key:    app.config.stripe.key,
+		Secret: app.config.Payment.Stripe.Secret,
+		Key:    app.config.Payment.Stripe.Key,
 	}
 	pi, err := card.RetrievePaymentIntent(txnData.PaymentIntent)
 	if err != nil {
@@ -474,8 +477,8 @@ func (app *application) SendPasswordResetEmail(w http.ResponseWriter, r *http.Re
 		return
 	}
 
-	link := fmt.Sprintf("%s/reset-password?email=%s", app.config.frontend, payload.Email)
-	sign := urlSigner.Signer{Secret: []byte(app.config.secretKey)}
+	link := fmt.Sprintf("%s/reset-password?email=%s", app.config.Urls.Frontend, payload.Email)
+	sign := urlSigner.Signer{Secret: []byte(app.config.SecretKey)}
 	signedLink := sign.GenerateTokenFromString(link)
 
 	var data struct {
@@ -509,7 +512,7 @@ func (app *application) ResetPassword(w http.ResponseWriter, r *http.Request) {
 	}
 
 	encryptor := encryption.Encryption{
-		Key: []byte(app.config.secretKey),
+		Key: []byte(app.config.SecretKey),
 	}
 	realEmail, err := encryptor.Decrypt(payload.Email)
 	if err != nil {
@@ -638,8 +641,8 @@ func (app *application) RefundCharge(w http.ResponseWriter, r *http.Request) {
 	// to ensure it's not greater than the original purchase or hasn't already been refunded etc.
 
 	card := cards.Card{
-		Secret:   app.config.stripe.secret,
-		Key:      app.config.stripe.key,
+		Secret:   app.config.Payment.Stripe.Secret,
+		Key:      app.config.Payment.Stripe.Key,
 		Currency: chargeToRefund.Currency,
 	}
 
@@ -677,8 +680,8 @@ func (app *application) CancelSubscription(w http.ResponseWriter, r *http.Reques
 		return
 	}
 	card := cards.Card{
-		Secret:   app.config.stripe.secret,
-		Key:      app.config.stripe.key,
+		Secret:   app.config.Payment.Stripe.Secret,
+		Key:      app.config.Payment.Stripe.Key,
 		Currency: subToCancel.Currency,
 	}
 	err = card.CancelSubscription(subToCancel.PaymentIntent)

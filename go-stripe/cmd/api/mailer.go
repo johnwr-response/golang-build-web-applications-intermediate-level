@@ -51,10 +51,10 @@ func (app *application) SendMail(from, to, subject, tmpl string, data interface{
 
 	// send the mail
 	server := mail.NewSMTPClient()
-	server.Host = app.config.smtp.host
-	server.Port = app.config.smtp.port
-	server.Username = app.config.smtp.username
-	server.Password = app.config.smtp.password
+	server.Host = app.config.Smtp.Host
+	server.Port = app.config.Smtp.Port
+	server.Username = app.config.Smtp.Username
+	server.Password = app.config.Smtp.Password
 	server.Encryption = mail.EncryptionTLS
 	server.KeepAlive = false
 	server.ConnectTimeout = 10 * time.Second
