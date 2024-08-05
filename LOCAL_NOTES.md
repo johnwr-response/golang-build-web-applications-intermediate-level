@@ -644,4 +644,72 @@ an application, and can handle all types of configuration needs and formats.
   - Database.Port -> APP_DATABASE_PORT
 
 
-### ZeroLog
+
+### Logging
+- Structured Logging  
+  Getting started with structured logging can seem daunting if you've never done it before, but breaking it down into
+  clear steps makes the process more manageable.
+  1. Choose a machine-parsable log format.
+     - LogFmt : [Introduction to LogFmt](https://betterstack.com/community/guides/logging/logfmt/)
+     - JSON
+  2. Adopt a structured logging framework.
+     [8 Factors for Choosing a Logging Framework](https://betterstack.com/community/guides/logging/logging-framework/)
+     - Log4j for Java
+     - Serilog for .NET
+     - Pino for Node.js
+     - Slog for Go.
+     - ZeroLog for Go.
+  3. Configure your log sources.
+     - Configure the other components and services that generate logs in your infrastructure as well. This can range
+       from dependencies like Nginx or PostgresSQL to cloud services like AWS Lambda. Ensure to look for the
+       instrumentation they provide, and configure them to output structured data if possible.
+  4. Transform unstructured logs into structured data.
+     - When dealing with dependencies that do not offer a way to output structured data, you can utilize log parsing
+       tools or write custom scripts to transform unstructured log entries into your chosen structured format.
+  5. Define a log schema.
+     - Standardize attribute names and values across all log sources so that such as the timestamps are always recorded
+       as ISO-8601 in the timestamp field and error codes are placed in the error_code field. This kind of harmonization
+       of data attributes facilitates seamless correlation and cross-analysis of log data, regardless of origin.
+  6. Normalize your log data.
+     - Log data normalization is standardizing log messages from different sources into a consistent format. It involves
+       mapping various field names and structures into a unified schema to ensure that similar data points are uniformly
+       represented across all logs. This is usually done by employing log normalization tools or middleware that map
+       fields and values from different log sources to a unified schema before they are sent to the centralized data
+       store. Examples of such tools include Logstash, Vector, and Fluentd.
+- Best practices for structured logging
+  It's all about making everyone's life easier when things go wrong. These are some concrete recommendations to guide
+  your instrumentation efforts
+  1. Ensure to tag each incoming request with a unique ID and propagate it across all log records generated from that
+     request. This makes it easy to isolate all the logs pertaining to each request made to your services.
+  2. Enrich each log event with sufficient contextual attributes to facilitate analysis and correlation. Remember that
+     observability requires high cardinality data so each additional attribute you include provides a different way to
+     slice and dice your data during analysis.
+  3. Ensure you enforce a standard log schema for all your log sources as soon as possible. OpenTelemetry's semantic
+     conventions is some notable work in this area.
+  4. Specify units directly within attribute names (e.g., response_time_ms, memory_usage_kb) to prevent ambiguity.
+  5. Include descriptive log messages in each log record so that it's easily interpreted by humans perusing the logs.
+  6. When logging error details, structure the included stack trace if possible.
+
+
+#### Slog
+- log/slog - Package slog provides structured logging, in which log records include a message, a severity level, and
+  various other attributes expressed as key-value pairs. [link](https://pkg.go.dev/log/slog)
+
+#### ZeroLog
+- ZeroLog - Zero Allocation JSON Logger
+  [link](https://github.com/rs/zerolog)
+- Import into project
+  ```go get -u github.com/rs/zerolog/log```
+- [A Complete Guide to Logging in Go with ZeroLog](https://betterstack.com/community/guides/logging/zerolog/)
+- Create a logger package
+  ```shell
+  md internal/logger
+  ni internal/logger/logger.go -type file -Value "package logger`n`n"
+  ```
+- Lumberjack - a log rolling package for Go
+  [link](https://github.com/natefinch/lumberjack)
+- Import into project
+  ```go get -u gopkg.in/natefinch/lumberjack.v2```
+
+$env:LOG_LEVEL=1; $env:APP_ENV='development'; air; $env:APP_ENV=$null; $env:LOG_LEVEL=$null
+

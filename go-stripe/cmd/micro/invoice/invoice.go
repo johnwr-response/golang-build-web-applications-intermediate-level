@@ -3,9 +3,11 @@ package main
 import (
 	"fmt"
 	"github.com/johnwr-response/golang-build-web-applications-intermediate-level/go-stripe/cmd/micro/config"
-	"log"
+	"github.com/rs/zerolog"
+	"github.com/rs/zerolog/log"
 	"net/http"
 	"os"
+	"runtime"
 	"time"
 )
 
@@ -26,8 +28,9 @@ const version = "1.0.0"
 type application struct {
 	//config   oldConfig
 	cfg      *config.Config
-	infoLog  *log.Logger
-	errorLog *log.Logger
+	debugLog zerolog.Logger
+	infoLog  zerolog.Logger
+	errorLog zerolog.Logger
 	version  string
 }
 
@@ -35,8 +38,14 @@ func main() {
 	// Read configuration
 	cfg, err := config.Read()
 	if err != nil {
-		log.Fatal(err.Error())
+		log.Fatal().Err(err).Msg("Error reading config")
+		//log.Fatal(err.Error())
 	}
+
+	//zerolog.SetGlobalLevel(zerolog.InfoLevel)
+	log.Debug().Msg("Hello from ZeroLog global debug logger")
+	log.Info().Msg("Hello from ZeroLog global info logger")
+	log.Error().Msg("Hello from ZeroLog global error logger")
 
 	//viper.SetConfigName("default")
 	//viper.SetConfigType("yaml")
@@ -60,12 +69,20 @@ func main() {
 	////flag.StringVar(&oldCfg.db.dsn, "dsn", "", "datasource")
 	//flag.Parse()
 
-	infoLog := log.New(os.Stdout, "INFO\t", log.Ldate|log.Ltime)
-	errorLog := log.New(os.Stdout, "ERROR\t", log.Ldate|log.Ltime|log.Lshortfile)
+	//infoLog := log.New(os.Stdout, "INFO\t", log.Ldate|log.Ltime)
+	//errorLog := log.New(os.Stdout, "ERROR\t", log.Ldate|log.Ltime|log.Lshortfile)
+	debugLog := zerolog.New(os.Stdout).Level(zerolog.DebugLevel).With().Int("Yes", 2).Timestamp().Caller().Logger()
+	infoLog := zerolog.New(os.Stdout).Level(zerolog.InfoLevel)
+	errorLog := zerolog.New(os.Stdout).Level(zerolog.ErrorLevel)
+
+	infoLog.UpdateContext(func(c zerolog.Context) zerolog.Context {
+		return c.Int("Yes", 1)
+	})
 
 	app := &application{
 		//config:   oldCfg,
 		cfg:      cfg,
+		debugLog: debugLog,
 		infoLog:  infoLog,
 		errorLog: errorLog,
 		version:  version,
@@ -75,7 +92,7 @@ func main() {
 
 	err = app.serve()
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal().Err(err).Msg("Error starting server")
 	}
 }
 
@@ -88,6 +105,7 @@ func (app *application) serve() error {
 		ReadHeaderTimeout: 5 * time.Second,
 		WriteTimeout:      5 * time.Second,
 	}
-	app.infoLog.Println(fmt.Sprintf("Starting invoice microservice on port %d", app.cfg.Port))
+	app.infoLog.Info().Str("go_version", runtime.Version()).Msgf("Starting invoice microservice on port %d", app.cfg.Port)
+	app.debugLog.Debug().Msgf("Starting invoice microservice on port %d", app.cfg.Port)
 	return srv.ListenAndServe()
 }
